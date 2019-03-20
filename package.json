@@ -1,0 +1,23 @@
+{
+  "name": "join-oulu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.8.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oamk-din18-spring2019/group4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oamk-din18-spring2019/group4/issues"
+  },
+  "homepage": "https://github.com/oamk-din18-spring2019/group4#readme"
+}
