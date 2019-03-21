@@ -1,8 +1,8 @@
-import { React, Component } from 'react'
+import React, { Component } from 'react'
 
 class App extends Component {
-  render () {
-    return <h1>React working!</h1>
+  render() {
+    return (<h1>React working!</h1>)
   }
 }
 
