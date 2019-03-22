@@ -15,7 +15,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel build react/src/index.js -d react/dist"
+    "start": "parcel react/src/index.html -d react/dist",
+    "build": "parcel build react/src/index.js -d react/dist"
   },
   "repository": {
     "type": "git",
