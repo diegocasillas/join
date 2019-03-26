@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
+import MainView from './views/main/MainView'
 
 class App extends Component {
   render() {
-    return (<h1>React working!</h1>)
+    return (
+      <MainView />
+    )
   }
 }
 
