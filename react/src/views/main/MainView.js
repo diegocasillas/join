@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import HomeView from '../home/HomeView'
+import LibraryView from '../library/LibraryView'
 
 class MainView extends Component {
   render() {
     return (
-      <div>
+      <div className='MainView'>
         <header>Header</header>
-        <div>View</div>
+        <Router >
+          <Route exact path='/' render={() => <HomeView />} />
+          <Route path='/events' render={() => <LibraryView />} />
+        </Router>
         <header>Footer</header>
       </div>
     )
