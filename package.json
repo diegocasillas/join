@@ -5,7 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "react-router-dom": "^5.0.0",
+    "views": "^1.0.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
