@@ -16,4 +16,13 @@ class UserController extends CI_Controller
       ->set_content_type('application/json')
       ->set_output(json_encode($data['users']));
   }
+
+  public function show($id)
+  {
+    $data['users'] = $this->user->getUser($id);
+    $this->output
+      ->set_status_header(200)
+      ->set_content_type('application/json')
+      ->set_output(json_encode($data['users']));
+  }
 }

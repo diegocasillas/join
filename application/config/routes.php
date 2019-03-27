@@ -54,3 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;
 
 $route['api/users']['get'] = 'UserController/index';
+$route['api/users/(:num)']['get'] = 'UserController/show/$1';
