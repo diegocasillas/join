@@ -55,4 +55,14 @@ class EventController extends CI_Controller
         ->set_output(json_encode($event));
     }
   }
+
+  public function delete($id)
+  {
+    $this->event->deleteEvent($id);
+
+    $this->output
+      ->set_status_header(200)
+      ->set_content_type('application/json')
+      ->set_output(json_encode(array()));
+  }
 }

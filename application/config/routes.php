@@ -59,3 +59,4 @@ $route['api/users/(:num)']['get'] = 'UserController/show/$1';
 $route['api/events']['get'] = 'EventController/index';
 $route['api/events/(:num)']['get'] = 'EventController/show/$1';
 $route['api/events']['post'] = 'EventController/create';
+$route['api/events/(:num)']['delete'] = 'EventController/delete/$1';

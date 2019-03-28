@@ -28,4 +28,9 @@ class Event extends CI_Model
 
     return $query->result_array();
   }
+
+  public function deleteEvent($id)
+  {
+    return $this->db->delete('events', array('id' => $id));
+  }
 }
