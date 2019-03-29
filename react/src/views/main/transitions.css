@@ -1,0 +1,27 @@
+.wrapper {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.slide-enter {
+  position:absolute;
+  left: -1px;
+}
+
+.slide-enter.slide-enter-active {
+  position:absolute;
+  left: 0;
+  transition: left 1000ms;
+}
+
+.slide-exit {
+  position:absolute;
+  left: 0px;
+}
+
+.slide-exit.slide-exit-active {
+  position:absolute;
+  left: 3000px;
+  transition: left 1000ms;
+}
