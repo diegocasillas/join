@@ -1,0 +1,29 @@
+/* Text style */
+ul 
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+/* Link style */
+li 
+{
+    margin: 0px 50px 0px 30px;
+    font-size: 16px;
+}
+
+.top-links{
+    margin-top: 10px;
+}
+
+.nav-item {
+    color: orangered;
+}
+
+.nav-item:hover {
+    color: black;
+}
+
+.nav-item:active {
+    color: red;
+}

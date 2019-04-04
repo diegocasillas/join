@@ -4,14 +4,19 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import HomeView from '../home/HomeView'
 import LibraryView from '../library/LibraryView'
 import EventView from '../event/EventView'
+import Header from './header/Header'
+import Footer from './footer/Footer'
+import Search from './search/Search'
+import './mainView.css'
 import './transitions.css'
 
 class MainView extends Component {
   render() {
     return (
       <div className='MainView'>
-        <header>Header</header>
-        <div className='wrapper'>
+        <Header />
+        <Search />
+        <div className="wrapper background">
           <TransitionGroup className='transition-group'>
             <CSSTransition
               key={this.props.location.key}
@@ -26,7 +31,7 @@ class MainView extends Component {
             </CSSTransition>
           </TransitionGroup>
         </div>
-        <header>Footer</header>
+        <Footer />
       </div>
     )
   }
