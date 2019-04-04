@@ -5,6 +5,7 @@ import LibraryView from '../library/LibraryView'
 import EventView from '../event/EventView'
 import Header from './header/Header'
 import Footer from './footer/Footer'
+import Search from './search/Search'
 import './mainView.css'
 
 class MainView extends Component {
@@ -12,6 +13,7 @@ class MainView extends Component {
     return (
       <div className='MainView'>
         <Header />
+        <Search />
         <div className="background">
           <Router>
             <Route exact path='/' render={() => <HomeView />} />
