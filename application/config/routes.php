@@ -53,5 +53,12 @@ $route['default_controller'] = 'IndexController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;
 
+$route['api/register']['post'] = 'AuthController/register';
+
 $route['api/users']['get'] = 'UserController/index';
 $route['api/users/(:num)']['get'] = 'UserController/show/$1';
+
+$route['api/events']['get'] = 'EventController/index';
+$route['api/events/(:num)']['get'] = 'EventController/show/$1';
+$route['api/events']['post'] = 'EventController/create';
+$route['api/events/(:num)']['delete'] = 'EventController/delete/$1';
