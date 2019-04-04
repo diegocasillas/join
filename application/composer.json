@@ -1,0 +1,7 @@
+{
+    "name": "join/join",
+    "type": "project",
+    "require": {
+        "firebase/php-jwt": "^5.0"
+    }
+}
