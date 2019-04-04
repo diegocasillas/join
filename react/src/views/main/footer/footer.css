@@ -1,0 +1,33 @@
+.Footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+}
+
+.box-size {
+    height: 80px;
+    width: 20px;
+}
+
+.col-md-1{
+    width: 5px;
+}
+
+.p-logo {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 40px 0px 0px 0px;
+}
+
+h6 {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px 0px 0px 0px;
+}
+
+.disclaimer-text {
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+    font-size: 10px;
+}
+
