@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Card from './Card'
 import './libraryView.css'
 class LibraryView extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { events: [1, 1, 1, 1, 1] }
   }
@@ -14,7 +14,7 @@ class LibraryView extends Component {
   //     .then((json) => this.setState({ events: json }))
   // }
 
-  render() {
+  render () {
     return (
       <div className='LibraryView'>
         LibraryView
@@ -23,8 +23,8 @@ class LibraryView extends Component {
         <Link to='/events/2'>Event 2</Link>
         <Link to='/events/3'>Event 3</Link>
 
-        <div class="container">
-          <div class="row">
+        <div class='container'>
+          <div class='row'>
             {this.state.events.map((event) => <Card />)}
           </div>
         </div>
