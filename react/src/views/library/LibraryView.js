@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom'
 import Card from './Card'
 import './libraryView.css'
 class LibraryView extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
-    this.state = { events: [1, 1, 1, 1, 1] }
+    this.state = { events: [] }
   }
 
-  // componentDidMount() {
-  //   fetch('http://localhost/index.php/api/events')
-  //     .then((response) => response.json())
-  //     .then((json) => this.setState({ events: json }))
-  // }
+  componentDidMount() {
+    fetch('http://localhost/index.php/api/events')
+      .then((response) => response.json())
+      .then((json) => this.setState({ events: json }))
+  }
 
-  render () {
+  render() {
     return (
       <div className='LibraryView'>
         LibraryView
@@ -25,7 +25,17 @@ class LibraryView extends Component {
 
         <div class='container'>
           <div class='row'>
-            {this.state.events.map((event) => <Card />)}
+            {this.state.events.map((event) => {
+              return (
+                <Card
+                  name={event.name}
+                  thumbnail={event.thumbnail}
+                  description={event.description}
+                  location={event.location}
+                  date={event.date}
+                />
+              )
+            })}
           </div>
         </div>
       </div>
