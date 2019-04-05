@@ -49,32 +49,39 @@ class AuthController extends CI_Controller
       ->set_content_type('application/json')
       ->set_output(json_encode(array('error' => 'the user already exists')));
   }
+
   public function login()
   {
     $data = array(
-
       'email' => $this->input->post('email'),
       'password' => $this->input->post('password')
     );
 
-    if ($this->userExists('email', $data['email'])) {
-      $user = $this->user->getUser('email', $data['email']);
-
-      if (password_verify($data['password'], $user['password'])) {
-        $tokenData = array(
-          'id' => $user['id']
-        );
-        $data['access_token'] = JWT::encode($tokenData, 'xxx');
-
-        return $this->output
-          ->set_status_header(200)
-          ->set_content_type('application/json')
-          ->set_output(json_encode(array('access_token' => $data['access_token'])));
-      }
+    if (!$this->userExists('email', $data['email'])) {
       return $this->output
         ->set_status_header(401)
         ->set_content_type('application/json')
-        ->set_output(json_encode(array('error' => 'invalid login')));
+        ->set_output(json_encode(array('error' => "user doesn't exist")));
     }
+
+    $user = $this->user->getUser('email', $data['email'])[0];
+
+    if (!password_verify($data['password'], $user['password'])) {
+      return $this->output
+        ->set_status_header(401)
+        ->set_content_type('application/json')
+        ->set_output(json_encode(array('error' => "invalid credentials")));
+    }
+
+    $tokenData = array(
+        'id' => $user['id']
+    );
+
+    $data['access_token'] = JWT::encode($tokenData, 'xxx');
+
+    return $this->output
+      ->set_status_header(200)
+      ->set_content_type('application/json')
+      ->set_output(json_encode(array('access_token' => $data['access_token'])));
   }
 }
