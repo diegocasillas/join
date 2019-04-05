@@ -1,3 +1,4 @@
 node_modules
 .cache
 react/dist
+application/vendor/
