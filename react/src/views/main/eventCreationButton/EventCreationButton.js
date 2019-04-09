@@ -6,8 +6,8 @@ import './eventCreationButton.css';
 class EventCreationButton extends Component {
     render() {
         return (
-            <div className="EventCreationButton">
-                <Link to='/create'>Create</Link>
+            <div className="EventCreationButton col-1">
+                <Link to='/create'><button className="btn btn-primary rounded-circle">+</button></Link>
             </div>
         )
     }
