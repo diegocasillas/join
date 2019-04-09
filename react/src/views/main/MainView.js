@@ -14,11 +14,16 @@ import './transitions.css'
 class MainView extends Component {
   render() {
     return (
-      <div className='MainView'>
-        <Header />
-        <Search />
-        <EventCreationButton />
-        <div className="wrapper background">
+      <div className='MainView background'>
+        <div className="sticky-top">
+          <Header />
+          <div className="row">
+            <div className="col-md-1" />
+            <Search />
+            <EventCreationButton />
+          </div>
+        </div>
+        <div className="wrapper">
           <TransitionGroup className='transition-group'>
             <CSSTransition
               key={this.props.location.key}
