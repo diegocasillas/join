@@ -39,6 +39,7 @@ class LibraryView extends Component {
                         description={event.description}
                         location={event.location}
                         date={event.date}
+                        nameLength={20}
                       />
                     )
                   })
