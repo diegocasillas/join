@@ -30,3 +30,12 @@ h6 {
     font-size: 10px;
 }
 
+/* Color */
+.white {
+    background-color: white !important;
+}
+
+.white-transparent {
+    background-color: rgba(235, 233, 233, 0.363);
+}
+
