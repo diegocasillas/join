@@ -5,14 +5,16 @@ import './libraryView.css'
 class LibraryView extends Component {
   constructor(props) {
     super(props)
-    this.state = { events: [] }
+    this.state = { events: [], loaded: false }
   }
 
   componentDidMount() {
     fetch('http://localhost/index.php/api/events')
       .then((response) => response.json())
-      .then((json) => this.setState({ events: json }))
-      .catch((error) => console.log(error))
+      .then((json) => {
+        this.setState({ events: json, loaded: true })
+      })
+      .catch((error) => this.setState({ loaded: true }))
   }
 
   render() {
@@ -27,20 +29,25 @@ class LibraryView extends Component {
         <div className='container'>
           <div className='row'>
             {
-              this.state.events.length !== 0
-                ? this.state.events.map((event) => {
-                  return (
-                    <Card
-                      name={event.name}
-                      thumbnail={event.thumbnail}
-                      description={event.description}
-                      location={event.location}
-                      date={event.date}
-                    />
-                  )
-                })
+              this.state.loaded
+                ? this.state.events.length !== 0
+                  ? this.state.events.map((event) => {
+                    return (
+                      <Card
+                        name={event.name}
+                        thumbnail={event.thumbnail}
+                        description={event.description}
+                        location={event.location}
+                        date={event.date}
+                        nameLength={20}
+                      />
+                    )
+                  })
+                  : <div className='mx-auto'>
+                    <h2>No events</h2>
+                  </div>
                 : <div className='mx-auto'>
-                  <h2>No events</h2>
+                  <h2>Loading</h2>
                 </div>
             }
           </div>

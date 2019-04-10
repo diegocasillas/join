@@ -62,49 +62,8 @@ div{
   .button1:focus:after {
     visibility: visible;
   }
-  .button2{
-    cursor: pointer;
-    color: black;
-    background-color:rgba(255, 136, 0, 0.842);
-    outline:darkorange;
-    position:relative;
-    overflow:hidden;
-    border:none;
-    height:30px;
-    width:50px;
-      
-  }
-    
-  .button2:not(:active):after {
-    animation: ripple 1s ease-out;
-  }
-  
-  .button2:after {
-    visibility: hidden;
-  }
-  
-  .button2:focus:after {
-    visibility: visible;
-  }
-  .button2:hover{
-      box-shadow:0 0 4px #9999;
-  }
-  .button2:after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 120px;
-    height: 120px;
-    margin-left:-60px;
-    margin-top: -60px;
-    background: #FFF;
-    border-radius: 100%;
-    opacity: .6;
-    transform: scale(0);
-  }
   .row-background{
-      background-color:rgb(248, 242, 245);
+      
       height:auto;
       -moz-box-shadow:0px 0px 7px #000000;
       -webkit-box-shadow:0px 0px 7px #000000;
