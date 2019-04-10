@@ -34,27 +34,27 @@ class EventController extends CI_Controller
     $this->load->library('form_validation');
 
     if ($this->form_validation->run('create event') == false) {
-      $this->output
+      return $this->output
         ->set_status_header(400)
         ->set_content_type('application/json')
         ->set_output(json_encode(array('error' => 'there was an error validating the input')));
-    } else {
-      $data = array(
-        'name' => $this->input->post('name'),
-        'description' => $this->input->post('description'),
-        'thumbnail' => $this->input->post('thumbnail'),
-        'location' => $this->input->post('location'),
-        'date' => $this->input->post('date'),
-        'manager' => $this->input->post('manager')
-      );
-
-      $event = $this->event->insertEvent($data);
-
-      $this->output
-        ->set_status_header(200)
-        ->set_content_type('application/json')
-        ->set_output(json_encode($event));
     }
+
+    $data = array(
+      'name' => $this->input->post('name'),
+      'description' => $this->input->post('description'),
+      'thumbnail' => $this->input->post('thumbnail'),
+      'location' => $this->input->post('location'),
+      'date' => $this->input->post('date'),
+      'manager' => $this->input->post('manager')
+    );
+
+    $event = $this->event->insertEvent($data);
+
+    return $this->output
+      ->set_status_header(200)
+      ->set_content_type('application/json')
+      ->set_output(json_encode($event));
   }
 
   public function delete($id)
