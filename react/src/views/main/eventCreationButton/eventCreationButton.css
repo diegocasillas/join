@@ -1,0 +1,13 @@
+.EventCreationButton {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.btn-primary {
+    background-color: rgb(255, 72, 0);
+    margin-top: 13px;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: rgb(0, 0, 0);
+}

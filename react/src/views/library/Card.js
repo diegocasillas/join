@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 class Card extends Component {
-
     renderName() {
         if (this.props.name && this.props.name.length > this.props.nameLength) {
             const string = this.props.name
@@ -10,7 +9,7 @@ class Card extends Component {
 
         return this.props.name
     }
-
+  
     render() {
         return (
             <div className='Card col-md-4 p-0'>

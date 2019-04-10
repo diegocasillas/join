@@ -7,16 +7,23 @@ import EventView from '../event/EventView'
 import Header from './header/Header'
 import Footer from './footer/Footer'
 import Search from './search/Search'
+import EventCreationButton from './eventCreationButton/EventCreationButton'
 import './mainView.css'
 import './transitions.css'
 
 class MainView extends Component {
   render() {
     return (
-      <div className='MainView'>
-        <Header />
-        <Search />
-        <div className="wrapper background">
+      <div className='MainView background'>
+        <div className="sticky-top">
+          <Header />
+          <div className="row">
+            <div className="col-md-1" />
+            <Search />
+            <EventCreationButton />
+          </div>
+        </div>
+        <div className="wrapper">
           <TransitionGroup className='transition-group'>
             <CSSTransition
               key={this.props.location.key}
@@ -27,6 +34,8 @@ class MainView extends Component {
                 <Route exact path='/' render={() => <HomeView />} />
                 <Route exact path='/events' render={() => <LibraryView />} />
                 <Route path='/events/:id' render={(props) => <EventView {...props} />} />
+                <Route path='/create' render={(props) => <EventCreationView {...props} />} />
+
               </Switch>
             </CSSTransition>
           </TransitionGroup>

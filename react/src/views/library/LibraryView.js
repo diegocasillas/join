@@ -5,6 +5,7 @@ import './libraryView.css'
 class LibraryView extends Component {
   constructor(props) {
     super(props)
+
     this.state = { events: [], loaded: false }
   }
 

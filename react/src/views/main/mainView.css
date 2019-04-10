@@ -2,4 +2,5 @@
     background-image:url(Icon_Background.png);
     background-size: cover;
     background-attachment: fixed;
+    min-height: 100vh;
 }
