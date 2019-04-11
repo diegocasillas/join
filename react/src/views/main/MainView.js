@@ -18,10 +18,12 @@ class MainView extends Component {
       <div className='MainView background'>
         <div className='sticky-top'>
           <Header />
-          <div className='row'>
-            <div className='col-md-1' />
-            <Search />
-            {this.props.location.pathname !== '/create' ? <EventCreationButton /> : null}
+          <div className='container-fluid'>
+            <div className='row'>
+              <div className='col-md-1' />
+              <Search />
+              {this.props.location.pathname !== '/create' ? <EventCreationButton /> : null}
+            </div>
           </div>
         </div>
         <div className='wrapper'>
