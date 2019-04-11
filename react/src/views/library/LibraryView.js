@@ -21,32 +21,30 @@ class LibraryView extends Component {
   render () {
     return (
       <div className='LibraryView'>
-        <div className='container'>
-          <div className='row'>
-            {
-              this.state.loaded
-                ? this.state.events.length !== 0
-                  ? this.state.events.map((event) => {
-                    return (
-                      <Card
-                        id={event.id}
-                        name={event.name}
-                        thumbnail={event.thumbnail}
-                        description={event.description}
-                        location={event.location}
-                        date={event.date}
-                        nameLength={20}
-                      />
-                    )
-                  })
-                  : <div className='mx-auto'>
-                    <h2>No events</h2>
-                  </div>
+        <div className='row'>
+          {
+            this.state.loaded
+              ? this.state.events.length !== 0
+                ? this.state.events.map((event) => {
+                  return (
+                    <Card
+                      id={event.id}
+                      name={event.name}
+                      thumbnail={event.thumbnail}
+                      description={event.description}
+                      location={event.location}
+                      date={event.date}
+                      nameLength={20}
+                    />
+                  )
+                })
                 : <div className='mx-auto'>
-                  <h2>Loading</h2>
+                  <h2>No events</h2>
                 </div>
-            }
-          </div>
+              : <div className='mx-auto'>
+                <h2>Loading</h2>
+              </div>
+          }
         </div>
       </div>
     )

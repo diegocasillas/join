@@ -26,24 +26,25 @@ class MainView extends Component {
             </div>
           </div>
         </div>
-        <div className='wrapper'>
-          <TransitionGroup className='transition-group'>
-            <CSSTransition
-              key={this.props.location.key}
-              timeout={{ enter: 300, exit: 300 }}
-              classNames={'slide'}
-            >
-              <Switch location={this.props.location}>
-                <Route exact path='/' render={() => <HomeView />} />
-                <Route exact path='/events' render={() => <LibraryView />} />
-                <Route path='/events/:id' render={(props) => <EventView {...props} />} />
-                <Route exact path='/create' render={(props) => <EventCreationView {...props} />} />
+        <div className='container'>
+          <div className='wrapper'>
+            <TransitionGroup className='transition-group'>
+              <CSSTransition
+                key={this.props.location.key}
+                timeout={{ enter: 2000, exit: 2000 }}
+                classNames={'slide'}
+              >
+                <Switch location={this.props.location}>
+                  <Route exact path='/' render={() => <HomeView />} />
+                  <Route exact path='/events' render={() => <LibraryView />} />
+                  <Route path='/events/:id' render={(props) => <EventView {...props} />} />
+                  <Route exact path='/create' render={(props) => <EventCreationView {...props} />} />
 
-              </Switch>
-            </CSSTransition>
-          </TransitionGroup>
+                </Switch>
+              </CSSTransition>
+            </TransitionGroup>
+          </div>
         </div>
-        <Footer />
       </div>
     )
   }
