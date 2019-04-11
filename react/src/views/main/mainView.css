@@ -1,3 +1,6 @@
+.MainView {
+    min-height: 101vh;
+}
 .background{
     background-image:url(Icon_Background.png);
     background-size: cover;
