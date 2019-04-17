@@ -6,22 +6,26 @@
 
 .slide-enter {
   position:absolute;
-  left: -1px;
+  left: -200vw;
+  opacity: 0.01;
 }
 
-.slide-enter.slide-enter-active {
+.slide-enter-active {
   position:absolute;
   left: 0;
-  transition: left 1000ms;
+  opacity: 1;
+  transition: all 2000ms;
 }
 
 .slide-exit {
   position:absolute;
-  left: 0px;
+  left: 0;
+  opacity: 1;
 }
 
-.slide-exit.slide-exit-active {
+.slide-exit-active {
   position:absolute;
-  left: 3000px;
-  transition: left 1000ms;
+  left: 200vw;
+  opacity: 0.01;
+  transition: all 2000ms;
 }
