@@ -1,5 +1,6 @@
 .colourtext{
-    color: rgb(255, 72, 0);
+    color:white;
+    text-align:center;
 }
 .top-buffer{
     margin-top:30px;
@@ -9,13 +10,17 @@ div{
 }
 .button1{
     cursor: pointer;
-    color: black;
-    background-color: rgb(255, 72, 0);
-    position:relative;
+    color: white;
+    background-color: #c4526b ;
     overflow:hidden;
     border: none;
-    height:40px;
-    width:80px;
+    height:95%;
+    width:100%;
+    right:0;
+    bottom:0;
+    position: relative;
+    outline:none;
+
 }
 .button1:hover{
     box-shadow:0 0 4px #9999;
@@ -30,22 +35,25 @@ div{
     height: 120px;
     margin-left:-60px;
     margin-top: -60px;
-    background: #FFF;
+    background: rgb(238, 13, 13);
     border-radius: 100%;
-    opacity: .6;
-    transform: scale(0);
+    opacity: 0;
+    transform: scale(1,1) translate(-50%);
+    transform-origin: 50% 50%;
   }
   
   @keyframes ripple {
     0% {
-      transform: scale(0);
+      transform: scale(0,0);
+      opacity: 0.4;
     }
     20% {
-      transform: scale(1);
+      transform: scale(4);
+      opacity: 0.2;
     }
     100% {
       opacity: 0;
-      transform: scale(1);
+      transform: scale(1,1);
     }
   }
   
@@ -71,4 +79,17 @@ div{
   }
   .row-buffer{
       margin-top:10px;
+  }
+  .background1{
+    background-image:url(https://catering-kvatric.hr/wp-content/uploads/2017/04/best-party-planner.jpg);
+    min-height:300px;
+    background-size:cover;
+    background-repeat: no-repeat;
+  }
+  .background2 {
+    background-image: linear-gradient(to top, #a93b68 0%, #ff8471 100%) 
+  }
+  .gradient-border{
+    height:5%; 
+    background-image: linear-gradient(to bottom, #a93b68 0%, #ff8471 100%)
   }
