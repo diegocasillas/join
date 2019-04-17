@@ -7,13 +7,12 @@ import EventView from '../event/EventView'
 import EventCreationView from '../event/EventCreationView'
 import Header from './header/Header'
 import Footer from './footer/Footer'
-import Search from './search/Search'
 import EventCreationButton from './eventCreationButton/EventCreationButton'
 import './mainView.css'
 import './transitions.css'
 
 class MainView extends Component {
-  render () {
+  render() {
     return (
       <div className='MainView background'>
         <div className='sticky-top'>
@@ -21,7 +20,6 @@ class MainView extends Component {
           <div className='container-fluid'>
             <div className='row'>
               <div className='col-md-1' />
-              <Search />
               {this.props.location.pathname !== '/create' ? <EventCreationButton /> : null}
             </div>
           </div>
