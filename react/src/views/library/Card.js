@@ -22,7 +22,7 @@ class Card extends Component {
     render() {
         return (
 
-            <div className='Card mb-5 col-10 p-0 shadow mx-auto'>
+            <div className='Card mb-5 col-9 p-0 shadow mx-auto'>
                 <div className='row'>
                     <div className='col-8 background1 p-0'>
                         <Link to={`/events/${this.props.id}`}></Link>
