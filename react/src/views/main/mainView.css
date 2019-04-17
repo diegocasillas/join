@@ -2,7 +2,7 @@
     min-height: 101vh;
 }
 .background{
-    background-image:url(Icon_Background.png);
+    background-image:url(JoinBackground.png);
     background-size: cover;
     background-attachment: fixed;
 }

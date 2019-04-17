@@ -5,5 +5,9 @@
     margin-top: 8px;
     margin-right: 16px;
     font-size: 17px;
-    
+}
+
+.searchBox {
+    border: none;
+    background-image: linear-gradient(to bottom, #a93b68 0%, #ff8471 100%)
 }
