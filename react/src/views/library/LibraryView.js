@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 import Card from './Card'
 import './libraryView.css'
 class LibraryView extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = { events: [], loaded: false }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     fetch('http://localhost/index.php/api/events')
       .then((response) => response.json())
       .then((json) => {
@@ -18,9 +18,9 @@ class LibraryView extends Component {
       .catch((error) => this.setState({ loaded: true }))
   }
 
-  render () {
+  render() {
     return (
-      <div className='LibraryView'>
+      <div className='LibraryView container'>
         <div className='row'>
           {
             this.state.loaded
