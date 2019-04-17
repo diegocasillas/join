@@ -1,7 +1,6 @@
-h3{
-    text-decoration:underline;
+.colourtext{
+    color: rgb(255, 72, 0);
 }
-
 .top-buffer{
     margin-top:30px;
 }
@@ -11,13 +10,12 @@ div{
 .button1{
     cursor: pointer;
     color: black;
-    background-color:orange;
-    outline:darkorange;
+    background-color: rgb(255, 72, 0);
     position:relative;
     overflow:hidden;
-    border:none;
-    height:30px;
-    width:50px;
+    border: none;
+    height:40px;
+    width:80px;
 }
 .button1:hover{
     box-shadow:0 0 4px #9999;

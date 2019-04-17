@@ -22,19 +22,22 @@ class Card extends Component {
 
     render() {
         return (
-            <div className='Card col-md-4 p-0'>
-                <div className='m-4 text-center shadow'>
+            <div className='Card col-md-12 p-0'>
+                <div className='m-4 shadow'>
                     <img src="https://carepharmaceuticals.com.au/wp-content/uploads/sites/19/2018/02/placeholder-600x400.png" className='img-fluid' />
                     <div className='container'>
                         <div className='row'>
-                            <p className='font-weight-light m-1'>
+                            <p className='font-weight-light mt-1 ml-4 colourtext'>
                                 {this.partyDate().month}<br />
                                 {this.partyDate().day}
                             </p>
                         </div>
                         <div className='row p-1'>
                             <div className='col-8 align-self-center'>
-                                <u><b>{this.renderName()}</b></u>
+                                <u><b>{this.renderName()}</b></u><br />
+                                <p className='mt-1'>
+                                    {this.props.location}
+                                </p>
                             </div>
                             <div className='col-4 align-self-center'>
                                 <button type='button' className='button1'>Join</button>
