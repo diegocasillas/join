@@ -9,7 +9,7 @@ class Event extends CI_Model
 
   public function getEvents()
   {
-    $query = $this->db->get('events');
+    $query = $this->db->order_by('id', 'DESC')->get('events');
     return $query->result_array();
   }
 
