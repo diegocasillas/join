@@ -1,8 +1,20 @@
+@font-face{
+    font-family:Brush;
+    src:url(../../assets/BRUSHSCI.TTF);
+
+}
+@font-face{
+    font-family:Mark;
+    src:url(../../assets/Marker_Felt_Regular.ttf);
+}
+
 .MainView {
     min-height: 101vh;
+    font-family:Mark;
 }
 .background{
     background-image:url(JoinBackground.png);
     background-size: cover;
     background-attachment: fixed;
 }
+
