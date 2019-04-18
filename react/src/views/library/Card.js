@@ -24,18 +24,26 @@ class Card extends Component {
 
             <div className='Card mb-5 col-9 p-0 shadow mx-auto'>
                 <div className='row'>
-                    <div className='col-8 background1 p-0'>
-                        <Link to={`/events/${this.props.id}`}></Link>
-                        <u><b>{this.renderName()}</b></u>
+                    <Link
+                        style={{ textDecoration: 'none', color: 'white' }}
+                        to={`/events/${this.props.id}`}
+                        className='col-8 background1 p-0 d-flex align-items-end'
+                    >
+                        <div className='d-flex flex-column m-3'>
+                            <div className='display-4'>
+                                {this.renderName()}
+                            </div>
+                            {this.props.location}
+                        </div>
+                    </Link>
 
-                    </div>
                     <div className='col-4 background2 p-0'>
                         <div className='h-75'>
                             <div className='display-2 colourtext text-center'>
                                 {this.partyDate().day}
                             </div>
-                            <div className='colourtext m-0'>
-                                {this.partyDate().month.toUpperCase()}
+                            <div className='colourtext m-0 text-center'>
+                                <h2>{this.partyDate().month.toUpperCase()}</h2>
                             </div>
 
                         </div>
@@ -46,7 +54,7 @@ class Card extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 
