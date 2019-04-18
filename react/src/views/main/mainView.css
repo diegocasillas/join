@@ -10,11 +10,18 @@
 
 .MainView {
     min-height: 101vh;
-    font-family:Mark;
 }
+
+.brush {
+    font-family: Brush;
+}
+
+.mark {
+    font-family: Mark;
+}
+
 .background{
     background-image:url(JoinBackground.png);
     background-size: cover;
     background-attachment: fixed;
 }
-
