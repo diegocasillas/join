@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
+import decode from 'jwt-decode'
+import Auth from '../../Auth'
 
 class EventCreationView extends Component {
   constructor (props) {
     super(props)
     this.state = { name: '', description: '', date: '', location: '', toEvents: false, eventId: null }
+    this.auth = new Auth()
   }
 
   handleChange (field, value) {
@@ -13,19 +16,19 @@ class EventCreationView extends Component {
 
   createEvent () {
     const data = new FormData()
-
+    
     data.append('name', this.state.name)
     data.append('description', this.state.description)
     data.append('location', this.state.location)
     data.append('date', this.state.date)
     data.append('thumbnail', 'asdadsads')
-    data.append('manager', 1)
+    data.append('manager', decode(this.auth.getToken()).id)
 
     fetch('http://localhost/index.php/api/events', {
       method: 'POST',
       body: data
     }).then(response => response.json())
-    .then(json => this.setState({ toEvents: true, eventId: json[0].id }))
+      .then(json => this.setState({ toEvents: true, eventId: json[0].id }))
   }
 
   render () {

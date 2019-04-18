@@ -4,11 +4,13 @@ import MainView from './views/main/MainView'
 import './views/main/transitions.css'
 
 class App extends Component {
-  render() {
+  render () {
     return (
-      <Router>
-        <MainView />
-      </Router>
+      <div className='App'>
+        <Router>
+          <MainView />
+        </Router>
+      </div>
     )
   }
 }

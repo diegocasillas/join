@@ -1,26 +1,28 @@
-h3{
-    text-decoration:underline;
+.colourtext{
+    color:white;
+    align-content: flex-end;
 }
 
-.top-buffer{
-    margin-top:30px;
-}
 div{
     word-wrap: break-word;
 }
 .button1{
     cursor: pointer;
-    color: black;
-    background-color:orange;
-    outline:darkorange;
-    position:relative;
+    color: white;
+    background-color: #c4526b ;
     overflow:hidden;
-    border:none;
-    height:30px;
-    width:50px;
+    border: none;
+    height:95%;
+    width:100%;
+    right:0;
+    bottom:0;
+    position: relative;
+    outline:none !important;
+    font-size: 1.7em;
+
 }
 .button1:hover{
-    box-shadow:0 0 4px #9999;
+    background-color:#D4606C;
 }
 
   .button1:after {
@@ -32,22 +34,25 @@ div{
     height: 120px;
     margin-left:-60px;
     margin-top: -60px;
-    background: #FFF;
+    background: rgb(238, 13, 13);
     border-radius: 100%;
-    opacity: .6;
-    transform: scale(0);
+    opacity: 0;
+    transform: scale(1,1) translate(-50%);
+    transform-origin: 50% 50%;
   }
   
   @keyframes ripple {
     0% {
-      transform: scale(0);
+      transform: scale(0,0);
+      opacity: 0.4;
     }
     20% {
-      transform: scale(1);
+      transform: scale(4);
+      opacity: 0.2;
     }
     100% {
       opacity: 0;
-      transform: scale(1);
+      transform: scale(1,1);
     }
   }
   
@@ -62,15 +67,17 @@ div{
   .button1:focus:after {
     visibility: visible;
   }
-  .row-background{
-      height:auto;
-      -moz-box-shadow:0px 0px 7px #000000;
-      -webkit-box-shadow:0px 0px 7px #000000;
-      box-shadow:0px 0px 7px #000000;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px; 
+
+  .background1{
+    background-image:url(https://catering-kvatric.hr/wp-content/uploads/2017/04/best-party-planner.jpg);
+    min-height:250px;
+    background-size:cover;
+    background-repeat: no-repeat;
   }
-  .row-buffer{
-      margin-top:10px;
+  .background2 {
+    background-image: linear-gradient(to top, #a93b68 0%, #ff8471 100%) 
+  }
+  .gradient-border{
+    height:5%; 
+    background-image: linear-gradient(to bottom, #a93b68 0%, #ff8471 100%)
   }

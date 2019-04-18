@@ -6,6 +6,7 @@ class AuthController extends CI_Controller
 {
   public function __construct()
   {
+    header('Access-Control-Allow-Origin:*');
     parent::__construct();
     $this->load->model('user');
     $this->load->helper('url_helper');
@@ -53,18 +54,18 @@ class AuthController extends CI_Controller
   public function login()
   {
     $data = array(
-      'email' => $this->input->post('email'),
+      'name' => $this->input->post('name'),
       'password' => $this->input->post('password')
     );
 
-    if (!$this->userExists('email', $data['email'])) {
+    if (!$this->userExists('name', $data['name'])) {
       return $this->output
         ->set_status_header(401)
         ->set_content_type('application/json')
         ->set_output(json_encode(array('error' => "user doesn't exist")));
     }
 
-    $user = $this->user->getUser('email', $data['email'])[0];
+    $user = $this->user->getUser('name', $data['name'])[0];
 
     if (!password_verify($data['password'], $user['password'])) {
       return $this->output
@@ -74,7 +75,7 @@ class AuthController extends CI_Controller
     }
 
     $tokenData = array(
-        'id' => $user['id']
+      'id' => $user['id']
     );
 
     $data['access_token'] = JWT::encode($tokenData, 'xxx');

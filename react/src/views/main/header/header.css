@@ -1,3 +1,7 @@
+.headerBox {
+   padding-top: 20px;
+}
+
 /* Text style */
 ul 
 {
@@ -16,14 +20,33 @@ li
     margin-top: 10px;
 }
 
-.nav-item {
-    color: orangered;
+.nav-link {
+    color: white;
+    font-family: fantasy;
 }
 
-.nav-item:hover {
-    color: black;
+.nav-link:hover {
+    color: rgb(240, 240, 240);
 }
 
-.nav-item:active {
-    color: red;
+.nav-link:active {
+    color: rgb(226, 206, 206);
+}
+
+
+.topnav input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+}
+
+.logo {
+    padding-left: 20px;
+}
+
+.searchBox {
+    background-image: linear-gradient( #a93b68 0%, #ff8471 100%)
 }
