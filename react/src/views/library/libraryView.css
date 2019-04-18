@@ -17,11 +17,12 @@ div{
     right:0;
     bottom:0;
     position: relative;
-    outline:none;
+    outline:none !important;
+    font-size: 1.7em;
 
 }
 .button1:hover{
-    box-shadow:0 0 4px #9999;
+    background-color:#D4606C;
 }
 
   .button1:after {
