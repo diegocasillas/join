@@ -1,0 +1,28 @@
+class Auth {
+  getToken () {
+    return localStorage.getItem('accessToken')
+  }
+
+  setToken (token) {
+    localStorage.setItem('accessToken', token)
+  }
+
+  login (name, password) {
+    const data = new FormData()
+
+    data.append('name', name)
+    data.append('password', password)
+
+    fetch('http://localhost/index.php/api/login', {
+      method: 'POST',
+      body: data
+    }).then(response => response.json())
+      .then(json => this.setToken(json.access_token))
+  }
+
+  loggedIn () {
+    return !!this.getToken()
+  }
+}
+
+export default Auth

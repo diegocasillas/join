@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import HomeView from '../home/HomeView'
+import LoginView from '../login/LoginView'
 import LibraryView from '../library/LibraryView'
 import EventView from '../event/EventView'
 import EventCreationView from '../event/EventCreationView'
@@ -12,7 +13,7 @@ import './mainView.css'
 import './transitions.css'
 
 class MainView extends Component {
-  render() {
+  render () {
     return (
       <div className='MainView background'>
         <div className='sticky-top'>
@@ -34,6 +35,7 @@ class MainView extends Component {
               >
                 <Switch location={this.props.location}>
                   <Route exact path='/' render={() => <HomeView />} />
+                  <Route exact path='/login' render={() => <LoginView />} />
                   <Route exact path='/events' render={() => <LibraryView />} />
                   <Route path='/events/:id' render={(props) => <EventView {...props} />} />
                   <Route exact path='/create' render={(props) => <EventCreationView {...props} />} />
