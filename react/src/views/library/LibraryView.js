@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Loader from 'react-loader-spinner'
+import CategoryBar from './CategoryBar'
 import Card from './Card'
 import './libraryView.css'
 class LibraryView extends Component {
@@ -18,9 +20,22 @@ class LibraryView extends Component {
       .catch((error) => this.setState({ loaded: true }))
   }
 
+  filterByCategory (categoryId) {
+    this.setState({ loaded: false })
+    const uri = categoryId === 0
+      ? 'http://localhost/index.php/api/events'
+      : 'http://localhost/index.php/api/events?category=' + categoryId
+
+    fetch(uri, {
+      method: 'GET'
+    }).then(response => response.json())
+      .then(json => { console.log(json); this.setState({ events: json, loaded: true }) })
+  }
+
   render () {
     return (
       <div className='LibraryView container'>
+        <CategoryBar filterByCategory={(id) => this.filterByCategory(id)} />
         <div className='row'>
           {
             this.state.loaded
@@ -38,11 +53,16 @@ class LibraryView extends Component {
                     />
                   )
                 })
-                : <div className='mx-auto'>
+                : <div className='mx-auto mt-5'>
                   <h2>No events</h2>
                 </div>
-              : <div className='mx-auto'>
-                <h2>Loading</h2>
+              : <div className='mx-auto mt-5'>
+                <Loader
+                  type='ThreeDots'
+                  color='white'
+                  height='140'
+                  width='140'
+                />
               </div>
           }
         </div>
