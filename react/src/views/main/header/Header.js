@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import Search from './search/Search';
 import logo from './Project-logo.png';
 import './header.css';
@@ -13,7 +14,7 @@ class Header extends Component {
                         <div className="row">
 
                             <div className="col-1">
-                                <img className="logo" src={logo} alt="Responsive image" width="120" height="55" />
+                                <Link to='/'><img className="logo" src={logo} alt="Responsive image" width="120" height="55" /></Link>
                             </div>
 
                             <Search />
