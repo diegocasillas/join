@@ -12,7 +12,7 @@ class Search extends Component {
                             <img className="search-icon" src={searchIcon} width="23" height="23" />
                         </span>
                     </div>
-                    <input type="text" className="search-box rounded-0 form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" />
+                    <input type="text" className="search-box rounded-0 form-control border-0" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" />
                 </div>
 
 
