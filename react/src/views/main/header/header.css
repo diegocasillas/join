@@ -12,12 +12,7 @@ ul
 /* Link style */
 li 
 {
-    margin: 0px 50px 0px 30px;
     font-size: 16px;
-}
-
-.top-links{
-    margin-top: 10px;
 }
 
 .nav-link {
@@ -33,20 +28,14 @@ li
     color: rgb(226, 206, 206);
 }
 
-
-.topnav input[type=text] {
-    float: right;
-    padding: 6px;
-    border: none;
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
-}
-
 .logo {
     padding-left: 20px;
 }
 
 .searchBox {
     background-image: linear-gradient( #a93b68 0%, #ff8471 100%)
+}
+
+.loginButton {
+    padding-left: 115px;
 }
