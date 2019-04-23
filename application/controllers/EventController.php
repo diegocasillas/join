@@ -46,7 +46,8 @@ class EventController extends CI_Controller
       'thumbnail' => $this->input->post('thumbnail'),
       'location' => $this->input->post('location'),
       'date' => $this->input->post('date'),
-      'manager' => $this->input->post('manager')
+      'manager' => $this->input->post('manager'),
+      'category' => $this->input->post('category')
     );
 
     $event = $this->event->insertEvent($data);
