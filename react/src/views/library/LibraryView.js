@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import CategoryBar from './CategoryBar'
 import Card from './Card'
 import './libraryView.css'
 class LibraryView extends Component {
@@ -18,9 +19,22 @@ class LibraryView extends Component {
       .catch((error) => this.setState({ loaded: true }))
   }
 
+  filterByCategory (categoryId) {
+    this.setState({ loaded: false })
+    const uri = categoryId === 0
+      ? 'http://localhost/index.php/api/events'
+      : 'http://localhost/index.php/api/events?category=' + categoryId
+
+    fetch(uri, {
+      method: 'GET'
+    }).then(response => response.json())
+      .then(json => { console.log(json); this.setState({ events: json, loaded: true }) })
+  }
+
   render () {
     return (
       <div className='LibraryView container'>
+        <CategoryBar filterByCategory={(id) => this.filterByCategory(id)} />
         <div className='row'>
           {
             this.state.loaded
