@@ -18,7 +18,7 @@ class LibraryView extends Component {
 
   render () {
     return (
-      <div className='CategoryBar text-center'>
+      <div className='CategoryBar text-center mb-5'>
         <button className='btn btn-primary' onClick={() => this.props.filterByCategory(0)}>All</button>
         {this.state.categories.map(category => <button className='btn btn-primary' onClick={() => this.props.filterByCategory(category.id)}>{category.name}</button>)}
       </div>

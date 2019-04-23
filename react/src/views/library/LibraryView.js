@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Loader from 'react-loader-spinner'
 import CategoryBar from './CategoryBar'
 import Card from './Card'
 import './libraryView.css'
@@ -52,11 +53,16 @@ class LibraryView extends Component {
                     />
                   )
                 })
-                : <div className='mx-auto'>
+                : <div className='mx-auto mt-5'>
                   <h2>No events</h2>
                 </div>
-              : <div className='mx-auto'>
-                <h2>Loading</h2>
+              : <div className='mx-auto mt-5'>
+                <Loader
+                  type='ThreeDots'
+                  color='white'
+                  height='140'
+                  width='140'
+                />
               </div>
           }
         </div>
