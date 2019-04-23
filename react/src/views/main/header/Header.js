@@ -22,7 +22,7 @@ class Header extends Component {
 
                             <div className="col-2 top-links">
                                 <li className="loginButton nav-item d-inline-block text-right">
-                                    <a className="nav-link" href="#3">Login <img className="profile" src={profile} alt="Responsive image" width="55" height="55" /></a>
+                                    <a className="login-link" href="/login">Login <img className="profile" src={profile} alt="Responsive image" width="55" height="55" /></a>
                                 </li>
                             </div>
 

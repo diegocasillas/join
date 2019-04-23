@@ -15,16 +15,17 @@ li
     font-size: 16px;
 }
 
-.nav-link {
+.login-link {
     color: white;
     font-family: fantasy;
 }
 
-.nav-link:hover {
+.login-link:hover {
     color: rgb(240, 240, 240);
+    text-decoration: none;
 }
 
-.nav-link:active {
+.login-link:active {
     color: rgb(226, 206, 206);
 }
 
