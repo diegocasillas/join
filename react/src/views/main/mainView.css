@@ -20,8 +20,15 @@
     font-family: Mark;
 }
 
-.background{
-    background-image:url(JoinBackground.png);
+body{
+    background:url(JoinBackground.png) no-repeat center fixed;
     background-size: cover;
-    background-attachment: fixed;
+}
+
+.btn-primary {
+    background-color: rgb(218, 115, 125) !important;
+}
+.btn-primary:hover {
+    background-color: rgb(218, 115, 125) !important;
+    background-image: none;
 }
