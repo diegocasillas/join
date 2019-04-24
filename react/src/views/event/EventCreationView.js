@@ -71,6 +71,7 @@ class EventCreationView extends Component {
         <div className='form-group'>
           <label for='category'>Category</label>
           <select class='form-control' id='category' onChange={(event) => this.handleChange('category', event.target.value)}>
+            <option>Select a category</option>
             {this.state.categories.map(category => <option value={category.id}>{category.name}</option>)}
           </select>
         </div>
