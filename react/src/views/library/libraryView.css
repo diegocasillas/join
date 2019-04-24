@@ -81,3 +81,11 @@ div{
     height:5%; 
     background-image: linear-gradient(to bottom, #a93b68 0%, #ff8471 100%)
   }
+
+  .brush {
+    font-family: Brush;
+}
+
+  .mark {
+    font-family: Mark;
+}
