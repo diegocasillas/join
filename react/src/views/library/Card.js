@@ -23,7 +23,6 @@ class Card extends Component {
     }
     render() {
         return (
-
             <div className='Card mb-5 col-9 p-0 shadow mx-auto'>
                 <div className='row'>
                     <Link
@@ -40,7 +39,6 @@ class Card extends Component {
                             </div>
                         </div>
                     </Link>
-
                     <div className='col-4 background2 p-0'>
                         <div className='h-75'>
                             <div className='display-2 colourtext text-center mark p-2 m-0'>
@@ -51,10 +49,9 @@ class Card extends Component {
                             </div>
 
                         </div>
-
                         <div className='h-25'>
                             <div className='gradient-border' />
-                            <button type='button' className='button1 m-0 p-0 brush'>Join</button>
+                            <button type='button' className='button1 m-0 p-0 brush' onClick={() => this.props.toggleJoin(this.props.id, this.props.joined)}>{this.props.joined ? 'Joined' : 'Join'}</button>
                         </div>
                     </div>
                 </div>
