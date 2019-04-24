@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
-import decode from 'jwt-decode'
 import Auth from '../../Auth'
 
 class EventCreationView extends Component {
@@ -30,7 +29,7 @@ class EventCreationView extends Component {
     data.append('date', this.state.date)
     data.append('category', this.state.category)
     data.append('thumbnail', 'asdadsads')
-    data.append('manager', decode(this.auth.getToken()).id)
+    data.append('manager', this.auth.getDecodedToken().id)
 
     fetch('http://localhost/index.php/api/events', {
       method: 'POST',
