@@ -5,7 +5,7 @@ import searchIcon from './search_icon.png'
 class Search extends Component {
     render() {
         return (
-            <div className="Search col-10 border-0">
+            <div className="Search col-8 border-0">
                 <div className="input-group mb-3 col-10 col-md-5 mx-auto top-links">
                     <div className="input-group-prepend">
                         <span className="searchBox rounded-0 input-group-text" id="basic-addon1">

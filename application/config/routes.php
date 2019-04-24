@@ -63,3 +63,9 @@ $route['api/events']['get'] = 'EventController/index';
 $route['api/events/(:num)']['get'] = 'EventController/show/$1';
 $route['api/events']['post'] = 'EventController/create';
 $route['api/events/(:num)']['delete'] = 'EventController/delete/$1';
+
+$route['api/categories']['get'] = 'CategoryController/index';
+
+$route['api/attendance']['get'] = 'AttendanceController/index';
+$route['api/attendance']['post'] = 'AttendanceController/create';
+$route['api/attendance/(:num)']['post'] = 'AttendanceController/delete/$1';
