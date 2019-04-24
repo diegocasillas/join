@@ -88,4 +88,5 @@ div{
 
   .mark {
     font-family: Mark;
+    background-color: inherit;
 }

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 class Card extends Component {
+
+    // Deals with event titles when they are too long to display.
     renderName() {
         if (this.props.name && this.props.name.length > this.props.nameLength) {
             const string = this.props.name
@@ -29,21 +31,23 @@ class Card extends Component {
                         to={`/events/${this.props.id}`}
                         className='col-8 background1 p-0 d-flex align-items-end'
                     >
-                        <div className='d-flex flex-column m-3'>
+                        <div className='d-flex flex-column m-3 mark'>
                             <div className='display-4'>
                                 {this.renderName()}
                             </div>
-                            {this.props.location}
+                            <div className='p-2'>
+                                {this.props.location}
+                            </div>
                         </div>
                     </Link>
 
                     <div className='col-4 background2 p-0'>
                         <div className='h-75'>
-                            <div className='display-2 colourtext text-center'>
+                            <div className='display-2 colourtext text-center mark p-2 m-0'>
                                 {this.partyDate().day}
                             </div>
-                            <div className='colourtext m-0 text-center'>
-                                <h2>{this.partyDate().month.toUpperCase()}</h2>
+                            <div className='colourtext p-1 m-0 text-center mark' style={{ fontSize: 30 }}>
+                                {this.partyDate().month.toUpperCase()}
                             </div>
 
                         </div>
@@ -57,30 +61,6 @@ class Card extends Component {
             </div >
         )
     }
-
-    // render() {
-    //     return (
-    //         <div className='Container'>
-    //         <div className='Card col-md-10 mx-auto p-0'>
-    //             <div className='m-4 mx-auto shadow'>
-    //                 <Link to={`/events/${this.props.id}`}><img src='https://carepharmaceuticals.com.au/wp-content/uploads/sites/19/2018/02/placeholder-600x400.png' className='img-fluid' /></Link>
-    //                 >
-    //                     <p className='font-weight-light m-1'>
-    //                     {this.partyDate().month}
-    //                     {this.partyDate().day}
-    //                 </p>
-
-    //                 <div className='col-8 align-self-center'>
-    //                     <Link to={`/events/${this.props.id}`}><u><b>{this.renderName()}</b></u></Link>
-    //                 </div>
-    //                 <div className='col-4 align-self-center'>
-    //                     <button type='button' className='button1'>Join</button>
-    //                 </div>
-    //             </div>
-    //         </div>
-
-    //     )
-    // }
 }
 
 export default Card
