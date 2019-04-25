@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Loader from 'react-loader-spinner'
 import Auth from '../../Auth'
 
 class Card extends Component {
     constructor(props) {
         super(props)
+        this.state = { loading: false }
         this.auth = new Auth()
     }
+
+    handleClick(id) {
+        this.setState({ loading: true })
+        this.props.toggleJoin(id).then(() => this.setState({ loading: false }))
+    }
+
 
     renderName() {
         if (this.props.name && this.props.name.length > this.props.nameLength) {
@@ -58,7 +66,18 @@ class Card extends Component {
                             <div className='gradient-border' />
                             {
                                 this.auth.loggedIn()
-                                    ? <button type='button' className='button1 m-0 p-0 brush' onClick={() => this.props.toggleJoin(this.props.id)}>{this.props.joined ? 'Joined' : 'Join'}</button>
+                                    ? <button type='button' className='button1 m-0 p-0 brush' onClick={() => this.handleClick(this.props.id)}>
+                                        {
+                                            this.state.loading
+                                                ? <Loader
+                                                    type='Oval'
+                                                    color='white'
+                                                    height='20'
+                                                    width='20'
+                                                />
+                                                : this.props.joined ? 'Joined' : 'Join'
+                                        }
+                                    </button>
                                     : <Link to='/login'><button type='button' className='button1 m-0 p-0 brush'>{this.props.joined ? 'Joined' : 'Join'}</button></Link>
                             }
                         </div>
