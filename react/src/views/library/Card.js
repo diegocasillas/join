@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Auth from '../../Auth'
 
 class Card extends Component {
+  constructor (props) {
+    super(props)
+    this.auth = new Auth()
+  }
+  
   renderName () {
     if (this.props.name && this.props.name.length > this.props.nameLength) {
       const string = this.props.name
@@ -50,37 +56,17 @@ class Card extends Component {
 
             <div className='h-25'>
               <div className='gradient-border' />
-              <button type='button' className='button1 m-0 p-0 brush' onClick={() => this.props.toggleJoin(this.props.id, this.props.joined)}>{this.props.joined ? 'Joined' : 'Join'}</button>
+              {
+                this.auth.loggedIn()
+                  ? <button type='button' className='button1 m-0 p-0 brush' onClick={() => this.props.toggleJoin(this.props.id)}>{this.props.joined ? 'Joined' : 'Join'}</button>
+                  : <Link to='/login'><button type='button' className='button1 m-0 p-0 brush'>{this.props.joined ? 'Joined' : 'Join'}</button></Link>
+              }
             </div>
           </div>
         </div>
       </div >
     )
   }
-
-  // render() {
-  //     return (
-  //         <div className='Container'>
-  //         <div className='Card col-md-10 mx-auto p-0'>
-  //             <div className='m-4 mx-auto shadow'>
-  //                 <Link to={`/events/${this.props.id}`}><img src='https://carepharmaceuticals.com.au/wp-content/uploads/sites/19/2018/02/placeholder-600x400.png' className='img-fluid' /></Link>
-  //                 >
-  //                     <p className='font-weight-light m-1'>
-  //                     {this.partyDate().month}
-  //                     {this.partyDate().day}
-  //                 </p>
-
-  //                 <div className='col-8 align-self-center'>
-  //                     <Link to={`/events/${this.props.id}`}><u><b>{this.renderName()}</b></u></Link>
-  //                 </div>
-  //                 <div className='col-4 align-self-center'>
-  //                     <button type='button' className='button1'>Join</button>
-  //                 </div>
-  //             </div>
-  //         </div>
-
-  //     )
-  // }
 }
 
 export default Card
