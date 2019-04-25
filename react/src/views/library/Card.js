@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Auth from '../../Auth'
 
 class Card extends Component {
+    constructor(props) {
+        super(props)
+        this.auth = new Auth()
+    }
 
-    // Deals with event titles when they are too long to display.
     renderName() {
         if (this.props.name && this.props.name.length > this.props.nameLength) {
             const string = this.props.name
@@ -12,7 +16,7 @@ class Card extends Component {
 
         return this.props.name
     }
-    // Function to deal with date so we can format it.
+
     partyDate() {
         const str = this.props.date
         const dateArray = str.split('-')
@@ -23,6 +27,7 @@ class Card extends Component {
     }
     render() {
         return (
+
             <div className='Card mb-5 col-9 p-0 shadow mx-auto'>
                 <div className='row'>
                     <Link
@@ -30,28 +35,32 @@ class Card extends Component {
                         to={`/events/${this.props.id}`}
                         className='col-8 background1 p-0 d-flex align-items-end'
                     >
-                        <div className='d-flex flex-column m-3 mark'>
+                        <div className='d-flex flex-column m-3'>
                             <div className='display-4'>
                                 {this.renderName()}
                             </div>
-                            <div className='p-2'>
-                                {this.props.location}
-                            </div>
+                            {this.props.location}
                         </div>
                     </Link>
+
                     <div className='col-4 background2 p-0'>
                         <div className='h-75'>
-                            <div className='display-2 colourtext text-center mark p-2 m-0'>
+                            <div className='display-2 colourtext text-center'>
                                 {this.partyDate().day}
                             </div>
-                            <div className='colourtext p-1 m-0 text-center mark' style={{ fontSize: 30 }}>
-                                {this.partyDate().month.toUpperCase()}
+                            <div className='colourtext m-0 text-center'>
+                                <h2>{this.partyDate().month.toUpperCase()}</h2>
                             </div>
 
                         </div>
+
                         <div className='h-25'>
                             <div className='gradient-border' />
-                            <button type='button' className='button1 m-0 p-0 brush' onClick={() => this.props.toggleJoin(this.props.id, this.props.joined)}>{this.props.joined ? 'Joined' : 'Join'}</button>
+                            {
+                                this.auth.loggedIn()
+                                    ? <button type='button' className='button1 m-0 p-0 brush' onClick={() => this.props.toggleJoin(this.props.id)}>{this.props.joined ? 'Joined' : 'Join'}</button>
+                                    : <Link to='/login'><button type='button' className='button1 m-0 p-0 brush'>{this.props.joined ? 'Joined' : 'Join'}</button></Link>
+                            }
                         </div>
                     </div>
                 </div>
