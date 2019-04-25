@@ -35,7 +35,7 @@ class Card extends Component {
   render () {
     return (
 
-      <div className='Card mb-5 col-9 p-0 shadow mx-auto'>
+      <div className='Card col-9 p-0 shadow mx-auto'>
         <div className='row'>
           <Link
             style={{ textDecoration: 'none', color: 'white' }}
