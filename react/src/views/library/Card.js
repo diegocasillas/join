@@ -50,7 +50,7 @@ class Card extends Component {
 
             <div className='h-25'>
               <div className='gradient-border' />
-              <button type='button' className='button1 m-0 p-0 brush'>Join</button>
+              <button type='button' className='button1 m-0 p-0 brush' onClick={() => this.props.toggleJoin(this.props.id, this.props.joined)}>{this.props.joined ? 'Joined' : 'Join'}</button>
             </div>
           </div>
         </div>

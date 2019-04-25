@@ -1,6 +1,12 @@
+import decode from 'jwt-decode'
+
 class Auth {
   getToken () {
     return localStorage.getItem('accessToken')
+  }
+
+  getDecodedToken () {
+    return decode(this.getToken())
   }
 
   setToken (token) {
