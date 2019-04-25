@@ -21,7 +21,7 @@ class MainView extends Component {
         <div className=''>
           <div className='sticky-top'>
 
-            <Header />
+            <Header loggedIn={this.props.loggedIn} />
             <div className='container-fluid'>
               <div className='row'>
                 <div className='col-md-1' />
@@ -40,7 +40,7 @@ class MainView extends Component {
                 >
                   <Switch location={this.props.location}>
                     <Route exact path='/' render={() => <HomeView />} />
-                    <Route exact path='/login' render={() => <LoginView />} />
+                    <Route exact path='/login' render={() => <LoginView toggleLogin={() => this.props.toggleLogin()} />} />
                     <Route exact path='/events' render={() => <LibraryView />} />
                     <Route path='/events/:id' render={(props) => <EventView {...props} />} />
                     <Route exact path='/create' render={(props) => <EventCreationView {...props} />} />
