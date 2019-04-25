@@ -116,17 +116,19 @@ class LibraryView extends Component {
               ? this.state.events.length !== 0
                 ? this.state.events.map((event) => {
                   return (
-                    <Card
-                      id={event.id}
-                      name={event.name}
-                      thumbnail={event.thumbnail}
-                      description={event.description}
-                      location={event.location}
-                      date={event.date}
-                      nameLength={20}
-                      joined={event.joined}
-                      toggleJoin={(eventId) => this.toggleJoin(eventId)}
-                    />
+                    <div className='col-12 mb-4'>
+                      <Card
+                        id={event.id}
+                        name={event.name}
+                        thumbnail={event.thumbnail}
+                        description={event.description}
+                        location={event.location}
+                        date={event.date}
+                        nameLength={20}
+                        joined={event.joined}
+                        toggleJoin={(eventId) => this.toggleJoin(eventId)}
+                      />
+                    </div>
                   )
                 })
                 : <div className='mx-auto mt-5'>
