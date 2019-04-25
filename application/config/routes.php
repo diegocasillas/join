@@ -58,6 +58,7 @@ $route['api/login']['post'] = 'AuthController/login';
 
 $route['api/users']['get'] = 'UserController/index';
 $route['api/users/(:num)']['get'] = 'UserController/show/$1';
+$route['api/users/(:num)/events']['get'] = 'UserController/events/$1';
 
 $route['api/events']['get'] = 'EventController/index';
 $route['api/events/(:num)']['get'] = 'EventController/show/$1';
