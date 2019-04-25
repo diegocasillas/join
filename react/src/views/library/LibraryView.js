@@ -92,18 +92,18 @@ class LibraryView extends Component {
     const eventIndex = events.findIndex(event => event.id === eventId)
 
     if (events[eventIndex].joined) {
-      this.deleteAttendance(events[eventIndex].attendanceId).then((json) => {
+      return this.deleteAttendance(events[eventIndex].attendanceId).then((json) => {
         events[eventIndex].attendanceId = null
         events[eventIndex].joined = false
         this.setState({ events: events, loaded: true })
       })
-    } else {
-      this.postAttendance(eventId).then(attendances => {
-        events[eventIndex].attendanceId = attendances[0].id
-        events[eventIndex].joined = true
-        this.setState({ events, loaded: true })
-      })
     }
+
+    return this.postAttendance(eventId).then(attendances => {
+      events[eventIndex].attendanceId = attendances[0].id
+      events[eventIndex].joined = true
+      this.setState({ events, loaded: true })
+    })
   }
 
   render () {
