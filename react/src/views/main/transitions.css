@@ -1,31 +1,61 @@
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
 .wrapper {
   position: relative;
   top: 0;
   left: 0;
 }
 
-.slide-enter {
+.slide-right-enter {
   position:absolute;
   left: -200vw;
   opacity: 0.01;
 }
 
-.slide-enter-active {
+.slide-left-enter {
+  position:absolute;
+  right: -200vw;
+  opacity: 0.01;
+}
+
+.slide-right-enter-active {
   position:absolute;
   left: 0;
   opacity: 1;
   transition: all 2000ms;
 }
 
-.slide-exit {
+.slide-left-enter-active {
+  position:absolute;
+  right: 0;
+  opacity: 1;
+  transition: all 2000ms;
+}
+
+.slide-right-exit {
   position:absolute;
   left: 0;
   opacity: 1;
 }
 
-.slide-exit-active {
+.slide-left-exit {
+  position:absolute;
+  right: 0;
+  opacity: 1;
+}
+
+.slide-right-exit-active {
   position:absolute;
   left: 200vw;
+  opacity: 0.01;
+  transition: all 2000ms;
+}
+
+.slide-left-exit-active {
+  position:absolute;
+  right: 200vw;
   opacity: 0.01;
   transition: all 2000ms;
 }

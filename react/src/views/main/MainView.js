@@ -7,24 +7,63 @@ import LibraryView from '../library/LibraryView'
 import EventView from '../event/EventView'
 import EventCreationView from '../event/EventCreationView'
 import Header from './header/Header'
-import Footer from './footer/Footer'
+import SideNavBar from './SideNavBar'
 import EventCreationButton from './eventCreationButton/EventCreationButton'
 import './mainView.css'
 import './sideNavBar.css'
 import './transitions.css'
-import sideLeftArrow from './SlidebarArrowLeft.png'
-import sideRightArrow from './SlidebarArrowRight.png'
 
 class MainView extends Component {
-  render() {
+  constructor (props) {
+    super(props)
+    this.state = { previous: null, back: null, backText: null, next: '/events', nextText: 'Library', slide: 'slide-right' }
+    this.slide = 'slide-right'
+  }
+
+  updatePrevious (id) {
+    window.scrollTo(0, 0)
+    this.setState({ previous: '/events/' + id })
+    this.prepareRedirect('/events/46', this.state.slide)
+  }
+
+  prepareRedirect (route, slide) {
+    let { previous, back, backText, next, nextText } = this.state
+
+    switch (route) {
+      case '/':
+        back = this.state.previous || null
+        backText = 'Event' || null
+        next = '/events'
+        nextText = 'Library'
+        break
+      case '/events':
+        back = '/'
+        backText = 'Home'
+        next = this.state.previous || null
+        nextText = 'Event'
+        break
+      case '/events/46':
+        previous = '/events/46'
+        back = '/events'
+        backText = 'Library'
+        next = '/'
+        nextText = 'Home'
+        break
+    }
+    this.slide = slide
+    this.setState({ previous, back, backText, next, nextText, slide })
+  }
+
+  redirect (route, slide) {
+    this.prepareRedirect(route, slide)
+    setTimeout(() => this.props.history.push(route), 100)
+  }
+
+  render () {
     return (
       <div className='MainView background'>
-        <div className='sideNavBarLeft position-fixed h-100 text-light'>
-          <div><img className='sideLeftArrow' src={sideLeftArrow} alt='Responsive image' width='40' height='50' /></div>
-          LEFT</div>
-        <div className='sideNavBarRight position-fixed h-100 text-light'>
-          <div><img className='sideRightArrow' src={sideRightArrow} alt='Responsive image' width='40' height='50' /></div>
-          RIGHT</div>
+        <SideNavBar side='left' route={this.state.back} text={this.state.backText} redirect={() => this.redirect(this.state.back, 'slide-left')} />
+        <SideNavBar side='right' route={this.state.next} text={this.state.nextText} redirect={() => this.redirect(this.state.next, 'slide-right')} />
         <div className='padding-fix'>
           <div className='sticky-top'>
 
@@ -43,13 +82,13 @@ class MainView extends Component {
                 <CSSTransition
                   key={this.props.location.key}
                   timeout={{ enter: 2000, exit: 2000 }}
-                  classNames={'slide'}
+                  classNames={this.state.slide}
                 >
                   <Switch location={this.props.location}>
                     <Route exact path='/' render={() => <HomeView />} />
                     <Route exact path='/login' render={() => <LoginView toggleLogin={() => this.props.toggleLogin()} />} />
                     <Route exact path='/events' render={() => <LibraryView />} />
-                    <Route path='/events/:id' render={(props) => <EventView {...props} />} />
+                    <Route path='/events/:id' render={(props) => <EventView updatePrevious={(id) => this.updatePrevious(id)} {...props} />} />
                     <Route exact path='/create' render={(props) => <EventCreationView {...props} />} />
 
                   </Switch>
