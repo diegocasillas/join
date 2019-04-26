@@ -1,7 +1,20 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Loader from 'react-loader-spinner'
+import Auth from '../../Auth'
 
 class Card extends Component {
+  constructor (props) {
+    super(props)
+    this.state = { loading: false }
+    this.auth = new Auth()
+  }
+
+  handleClick (id) {
+    this.setState({ loading: true })
+    this.props.toggleJoin(id).then(() => this.setState({ loading: false }))
+  }
+
   renderName () {
     if (this.props.name && this.props.name.length > this.props.nameLength) {
       const string = this.props.name
@@ -22,7 +35,7 @@ class Card extends Component {
   render () {
     return (
 
-      <div className='Card mb-5 col-9 p-0 shadow mx-auto'>
+      <div className='Card col-9 p-0 shadow mx-auto'>
         <div className='row'>
           <Link
             style={{ textDecoration: 'none', color: 'white' }}
@@ -50,37 +63,28 @@ class Card extends Component {
 
             <div className='h-25'>
               <div className='gradient-border' />
-              <button type='button' className='button1 m-0 p-0 brush' onClick={() => this.props.toggleJoin(this.props.id, this.props.joined)}>{this.props.joined ? 'Joined' : 'Join'}</button>
+              {
+                this.auth.loggedIn()
+                  ? <button type='button' className='button1 m-0 p-0 brush' onClick={() => this.handleClick(this.props.id)}>
+                    {
+                      this.state.loading
+                        ? <Loader
+                          type='Oval'
+                          color='white'
+                          height='20'
+                          width='20'
+                        />
+                        : this.props.joined ? 'Joined' : 'Join'
+                    }
+                  </button>
+                  : <Link to='/login'><button type='button' className='button1 m-0 p-0 brush'>{this.props.joined ? 'Joined' : 'Join'}</button></Link>
+              }
             </div>
           </div>
         </div>
       </div >
     )
   }
-
-  // render() {
-  //     return (
-  //         <div className='Container'>
-  //         <div className='Card col-md-10 mx-auto p-0'>
-  //             <div className='m-4 mx-auto shadow'>
-  //                 <Link to={`/events/${this.props.id}`}><img src='https://carepharmaceuticals.com.au/wp-content/uploads/sites/19/2018/02/placeholder-600x400.png' className='img-fluid' /></Link>
-  //                 >
-  //                     <p className='font-weight-light m-1'>
-  //                     {this.partyDate().month}
-  //                     {this.partyDate().day}
-  //                 </p>
-
-  //                 <div className='col-8 align-self-center'>
-  //                     <Link to={`/events/${this.props.id}`}><u><b>{this.renderName()}</b></u></Link>
-  //                 </div>
-  //                 <div className='col-4 align-self-center'>
-  //                     <button type='button' className='button1'>Join</button>
-  //                 </div>
-  //             </div>
-  //         </div>
-
-  //     )
-  // }
 }
 
 export default Card

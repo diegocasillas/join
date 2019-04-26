@@ -19,7 +19,7 @@ class Auth {
     data.append('name', name)
     data.append('password', password)
 
-    fetch('http://localhost/index.php/api/login', {
+    return fetch('http://localhost/index.php/api/login', {
       method: 'POST',
       body: data
     }).then(response => response.json())
