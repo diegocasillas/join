@@ -32,6 +32,7 @@ class EventView extends Component {
               location={this.state.event.location}
               date={this.state.event.date}
               nameLength={20}
+              showDescription
             />
             : null}
 
