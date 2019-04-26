@@ -13,7 +13,7 @@ class UserEvents extends Component {
 
   render () {
     return (
-      <div className='UserEvents mb-5'>
+      <div className='UserEvents'>
         <h4 className='mark mb-4 text-center'>{this.props.title}</h4>
         <div className='row'>
           {
@@ -62,4 +62,4 @@ class UserEvents extends Component {
   }
 }
 
-export default withEventInterface(UserEvents, true)
+export default withEventInterface(UserEvents, 'user')
