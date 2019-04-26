@@ -10,6 +10,7 @@ class EventView extends Component {
   }
 
   componentDidMount () {
+    this.props.updatePrevious(this.props.match.params.id)
     fetch('http://localhost/index.php/api/events/' + this.props.match.params.id)
       .then((response) => response.json())
       .then((json) => {
@@ -20,8 +21,7 @@ class EventView extends Component {
 
   render () {
     return (
-      <div className='EventView'>
-        <Link to='/'>Home</Link>
+      <div className='EventView container'>
         {
           this.state.event
             ? <Card
