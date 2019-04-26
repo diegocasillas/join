@@ -4,87 +4,88 @@ import Loader from 'react-loader-spinner'
 import Auth from '../../Auth'
 
 class Card extends Component {
-  constructor (props) {
-    super(props)
-    this.state = { loading: false }
-    this.auth = new Auth()
-  }
-
-  handleClick (id) {
-    this.setState({ loading: true })
-    this.props.toggleJoin(id).then(() => this.setState({ loading: false }))
-  }
-
-  renderName () {
-    if (this.props.name && this.props.name.length > this.props.nameLength) {
-      const string = this.props.name
-      return string.substring(0, this.props.nameLength) + '...'
+    constructor(props) {
+        super(props)
+        this.state = { loading: false }
+        this.auth = new Auth()
     }
 
-    return this.props.name
-  }
+    handleClick(id) {
+        this.setState({ loading: true })
+        this.props.toggleJoin(id).then(() => this.setState({ loading: false }))
+    }
 
-  partyDate () {
-    const str = this.props.date
-    const dateArray = str.split('-')
-    const options = { year: 'numeric', month: 'short', day: '2-digit' }
-    const partydate = Intl.DateTimeFormat('en-GB', options).format(new Date(Date.UTC(dateArray[0], dateArray[1], dateArray[2])))
-    const datesplit = partydate.split(' ')
-    return { day: datesplit[0], month: datesplit[1] }
-  }
-  render () {
-    return (
 
-      <div className='Card col-9 p-0 shadow mx-auto'>
-        <div className='row'>
-          <Link
-            style={{ textDecoration: 'none', color: 'white' }}
-            to={`/events/${this.props.id}`}
-            className='col-8 background1 p-0 d-flex align-items-end'
-          >
-            <div className='d-flex flex-column m-3'>
-              <div className='display-4'>
-                {this.renderName()}
-              </div>
-              {this.props.location}
-            </div>
-          </Link>
+    renderName() {
+        if (this.props.name && this.props.name.length > this.props.nameLength) {
+            const string = this.props.name
+            return string.substring(0, this.props.nameLength) + '...'
+        }
 
-          <div className='col-4 background2 p-0'>
-            <div className='h-75'>
-              <div className='display-2 colourtext text-center'>
-                {this.partyDate().day}
-              </div>
-              <div className='colourtext m-0 text-center'>
-                <h2>{this.partyDate().month.toUpperCase()}</h2>
-              </div>
+        return this.props.name
+    }
 
-            </div>
+    partyDate() {
+        const str = this.props.date
+        const dateArray = str.split('-')
+        const options = { year: 'numeric', month: 'short', day: '2-digit' }
+        const partydate = Intl.DateTimeFormat('en-GB', options).format(new Date(Date.UTC(dateArray[0], dateArray[1], dateArray[2])))
+        const datesplit = partydate.split(' ')
+        return { day: datesplit[0], month: datesplit[1] }
+    }
+    render() {
+        return (
 
-            <div className='h-25'>
-              <div className='gradient-border' />
-              {
-                this.auth.loggedIn()
-                  ? <button type='button' className='button1 m-0 p-0 brush' onClick={() => this.handleClick(this.props.id)}>
-                    {
-                      this.state.loading
-                        ? <Loader
-                          type='Oval'
-                          color='white'
-                          height='20'
-                          width='20'
-                        />
-                        : this.props.joined ? 'Joined' : 'Join'
-                    }
-                  </button>
-                  : <Link to='/login'><button type='button' className='button1 m-0 p-0 brush'>{this.props.joined ? 'Joined' : 'Join'}</button></Link>
-              }
-            </div>
-          </div>
-        </div>
-      </div >
-    )
-  }
+            <div className='Card mb-5 col-9 p-0 shadow mx-auto'>
+                <div className='row'>
+                    <Link
+                        style={{ textDecoration: 'none', color: 'white' }}
+                        to={`/events/${this.props.id}`}
+                        className='col-8 background1 p-0 d-flex align-items-end'
+                    >
+                        <div className='d-flex flex-column m-3'>
+                            <div className='display-4'>
+                                {this.renderName()}
+                            </div>
+                            {this.props.location}
+                        </div>
+                    </Link>
+
+                    <div className='col-4 background2 p-0'>
+                        <div className='h-75'>
+                            <div className='display-2 colourtext text-center'>
+                                {this.partyDate().day}
+                            </div>
+                            <div className='colourtext m-0 text-center'>
+                                <h2>{this.partyDate().month.toUpperCase()}</h2>
+                            </div>
+
+                        </div>
+
+                        <div className='h-25'>
+                            <div className='gradient-border' />
+                            {
+                                this.auth.loggedIn()
+                                    ? <button type='button' className='button1 m-0 p-0 brush' onClick={() => this.handleClick(this.props.id)}>
+                                        {
+                                            this.state.loading
+                                                ? <Loader
+                                                    type='Oval'
+                                                    color='white'
+                                                    height='20'
+                                                    width='20'
+                                                />
+                                                : this.props.joined ? 'Joined' : 'Join'
+                                        }
+                                    </button>
+                                    : <Link to='/login'><button type='button' className='button1 m-0 p-0 brush'>{this.props.joined ? 'Joined' : 'Join'}</button></Link>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div >
+        )
+    }
 }
 
 export default Card
