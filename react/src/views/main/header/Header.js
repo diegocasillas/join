@@ -6,7 +6,7 @@ import profile from './profileIcon.png'
 import './header.css'
 
 class Header extends Component {
-  render () {
+  render() {
     return (
       <div className='Header'>
         <nav className='container-fluid headerBox'>
