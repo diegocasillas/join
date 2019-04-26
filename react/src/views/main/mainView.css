@@ -18,6 +18,7 @@
 
 .mark {
     font-family: Mark;
+    background: inherit;
 }
 
 body{

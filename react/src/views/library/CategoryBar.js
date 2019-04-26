@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import Card from './Card'
-import './libraryView.css'
-class LibraryView extends Component {
+
+class CategoryBar extends Component {
   constructor (props) {
     super(props)
 
@@ -13,7 +11,7 @@ class LibraryView extends Component {
     fetch('http://localhost/index.php/api/categories', {
       method: 'GET'
     }).then(response => response.json())
-      .then(json => this.setState({ categories: json }))
+      .then(categories => this.setState({ categories }))
   }
 
   render () {
@@ -26,4 +24,4 @@ class LibraryView extends Component {
   }
 }
 
-export default LibraryView
+export default CategoryBar

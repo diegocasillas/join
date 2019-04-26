@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import Auth from '../../Auth'
 
 class LoginView extends Component {
   constructor (props) {
     super(props)
-    this.state = { name: '', password: '' }
     this.auth = new Auth()
+    this.state = { name: '', password: '', toEvents: false }
   }
 
   handleChange (field, value) {
@@ -14,9 +15,18 @@ class LoginView extends Component {
 
   login () {
     this.auth.login(this.state.name, this.state.password)
+      .then(() => {
+        this.props.toggleLogin()
+        this.setState({ toEvents: true })
+      })
   }
 
   render () {
+    if (this.state.toEvents) {
+      this.setState({ toEvents: false })
+      return <Redirect to={`/events`} />
+    }
+
     return (
       <div className='LoginView'>
         <div className='form-group'>
