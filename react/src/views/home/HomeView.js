@@ -23,8 +23,7 @@ class HomeView extends Component {
           <Link to='/events'><button className='btn btn-primary mx-auto'>Events</button></Link>
         </div>
 
-        <UserEvents id='myEvents' title='My events' />
-        <UserEvents id='latestEvents' title='Latest events' />
+        { this.auth.loggedIn() && <UserEvents id='myEvents' title='My events' /> }
       </div>
     )
   }
