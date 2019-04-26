@@ -90,3 +90,13 @@ div{
     font-family: Mark;
     background-color: inherit;
 }
+  .ubuntu-regular{
+  font-family: Ubuntu-regular;
+}
+  .ubuntu-bold{
+  font-family: Ubuntu-bold;
+}
+.octicon{
+  width: 20px;
+  height: 25px;
+}

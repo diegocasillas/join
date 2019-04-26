@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import Auth from '../../Auth'
+import Octicon, { Location } from '@githubprimer/octicons-react'
 
 class Card extends Component {
     constructor(props) {
@@ -43,23 +44,26 @@ class Card extends Component {
                         to={`/events/${this.props.id}`}
                         className='col-8 background1 p-0 d-flex align-items-end'
                     >
-                        <div className='d-flex flex-column m-3'>
-                            <div className='display-4'>
+                        <div className='d-flex flex-column m-3' style={{ textShadow: 'black 2px 2px 2px' }}>
+                            <div className='p-0 ubuntu-regular display-4 mt-2'>
                                 {this.renderName()}
                             </div>
-                            {this.props.location}
+                            <div className='ubuntu-regular ml-2' style={{ fontSize: '25px' }}>
+                                <Octicon icon={Location} /> <span className='ml-1' style={{ position: 'relative', top: '-3px' }}> {this.props.location}</span>
+                            </div>
                         </div>
                     </Link>
 
                     <div className='col-4 background2 p-0'>
-                        <div className='h-75'>
-                            <div className='display-2 colourtext text-center'>
-                                {this.partyDate().day}
+                        <div className='h-75' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <div style={{ display: 'flex-column', textAlign: 'center' }}>
+                                <div className='colourtext ubuntu-regular ' style={{ fontSize: '100px' }}>
+                                    {this.partyDate().day}
+                                </div>
+                                <div className='colourtext m-0 ubuntu-regular' style={{ position: 'relative', top: '-20px', fontSize: '30px' }}>
+                                    {this.partyDate().month.toUpperCase()}
+                                </div>
                             </div>
-                            <div className='colourtext m-0 text-center'>
-                                <h2>{this.partyDate().month.toUpperCase()}</h2>
-                            </div>
-
                         </div>
 
                         <div className='h-25'>

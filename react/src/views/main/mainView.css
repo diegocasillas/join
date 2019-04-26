@@ -7,6 +7,14 @@
     font-family:Mark;
     src:url(../../assets/Marker_Felt_Regular.ttf);
 }
+@font-face{
+    font-family: Ubuntu-bold;
+    src:url(../../assets/Ubuntu-Bold.ttf);
+}
+@font-face{
+    font-family: Ubuntu-regular;
+    src:url(../../assets/Ubuntu-Regular.ttf);
+}
 
 .MainView {
     min-height: 101vh;
