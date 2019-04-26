@@ -10,14 +10,21 @@ import Header from './header/Header'
 import Footer from './footer/Footer'
 import EventCreationButton from './eventCreationButton/EventCreationButton'
 import './mainView.css'
+import './sideNavBar.css'
 import './transitions.css'
+import sideLeftArrow from './SlidebarArrowLeft.png'
+import sideRightArrow from './SlidebarArrowRight.png'
 
 class MainView extends Component {
-  render () {
+  render() {
     return (
       <div className='MainView background'>
-        <div className='position-fixed h-100 text-light' style={{ left: 0, backgroundColor: 'rgba(0,0,0,0.55)' }} >LEFT</div>
-        <div className='position-fixed h-100 text-light' style={{ right: 0, backgroundColor: 'rgba(0,0,0,0.55)' }}>RIGHT</div>
+        <div className='sideNavBarLeft position-fixed h-100 text-light'>
+          <div><img className='sideLeftArrow' src={sideLeftArrow} alt='Responsive image' width='40' height='50' /></div>
+          LEFT</div>
+        <div className='sideNavBarRight position-fixed h-100 text-light'>
+          <div><img className='sideRightArrow' src={sideRightArrow} alt='Responsive image' width='40' height='50' /></div>
+          RIGHT</div>
         <div className=''>
           <div className='sticky-top'>
 
