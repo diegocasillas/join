@@ -36,8 +36,7 @@ class Card extends Component {
     }
     render() {
         return (
-
-            <div className='Card mb-5 col-9 p-0 shadow mx-auto'>
+            <div className='Card col-9 p-0 shadow mx-auto'>
                 <div className='row'>
                     <Link
                         style={{ textDecoration: 'none', color: 'white' }}
@@ -45,11 +44,17 @@ class Card extends Component {
                         className='col-8 background1 p-0 d-flex align-items-end'
                     >
                         <div className='d-flex flex-column m-3' style={{ textShadow: 'black 2px 2px 2px' }}>
-                            <div className='p-0 ubuntu-regular display-4 mt-2'>
+                            <div className='p-0 ubuntu-regular mt-2' style={{ fontSize: '54px' }}>
                                 {this.renderName()}
                             </div>
                             <div className='ubuntu-regular ml-2' style={{ fontSize: '25px' }}>
-                                <Octicon icon={Location} /> <span className='ml-1' style={{ position: 'relative', top: '-3px' }}> {this.props.location}</span>
+                                <Octicon icon={Location} />
+                                <span
+                                    className='ml-1'
+                                    style={{ position: 'relative', top: '-3px' }}
+                                >
+                                    {this.props.location}
+                                </span>
                             </div>
                         </div>
                     </Link>
@@ -57,10 +62,10 @@ class Card extends Component {
                     <div className='col-4 background2 p-0'>
                         <div className='h-75' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <div style={{ display: 'flex-column', textAlign: 'center' }}>
-                                <div className='colourtext ubuntu-regular ' style={{ fontSize: '100px' }}>
+                                <div className='colourtext ubuntu-bold ' style={{ fontSize: '100px' }}>
                                     {this.partyDate().day}
                                 </div>
-                                <div className='colourtext m-0 ubuntu-regular' style={{ position: 'relative', top: '-20px', fontSize: '30px' }}>
+                                <div className='colourtext m-0 ubuntu-bold' style={{ position: 'relative', top: '-20px', fontSize: '35px' }}>
                                     {this.partyDate().month.toUpperCase()}
                                 </div>
                             </div>
