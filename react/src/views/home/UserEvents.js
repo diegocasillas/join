@@ -13,7 +13,7 @@ class UserEvents extends Component {
 
   render () {
     return (
-      <div className='UserEvents'>
+      <div className='UserEvents mb-5'>
         <h4 className='mark mb-4 text-center'>{this.props.title}</h4>
         <div className='row'>
           {
