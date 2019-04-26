@@ -33,3 +33,7 @@ body{
     background-color: rgb(218, 115, 125) !important;
     background-image: none;
 }
+
+.padding-fix {
+    padding: 0 70px;
+}

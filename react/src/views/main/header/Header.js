@@ -21,7 +21,7 @@ class Header extends Component {
               <Search />
 
               <div className='col-2 top-links'>
-                <li className='loginButton nav-item d-inline-block text-right'>
+                <li className='loginButton nav-item  text-right'>
                   <Link to={this.props.loggedIn ? '/logout' : '/login'}>{this.props.loggedIn ? 'Logout' : 'Login'} <img className='profile' src={profile} alt='Responsive image' width='55' height='55' /></Link>
                 </li>
               </div>

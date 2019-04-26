@@ -25,7 +25,7 @@ class MainView extends Component {
         <div className='sideNavBarRight position-fixed h-100 text-light'>
           <div><img className='sideRightArrow' src={sideRightArrow} alt='Responsive image' width='40' height='50' /></div>
           RIGHT</div>
-        <div className=''>
+        <div className='padding-fix'>
           <div className='sticky-top'>
 
             <Header loggedIn={this.props.loggedIn} />
