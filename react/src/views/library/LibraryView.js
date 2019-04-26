@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import Auth from '../../Auth'
 import withEventInterface from '../../EventInterface'
 import CategoryBar from './CategoryBar'
 import Card from './Card'
