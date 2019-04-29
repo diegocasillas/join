@@ -16,20 +16,31 @@ import './transitions.css'
 class MainView extends Component {
   constructor (props) {
     super(props)
-    this.state = { previous: null, back: null, backText: null, next: '/events', nextText: 'Library', slide: 'slide-right' }
+    this.state = { previous: null, back: null, backText: null, next: null, nextText: null, slide: 'slide-right' }
     this.slide = 'slide-right'
+  }
+  componentDidMount () {
+    this.prepareRedirect(this.props.location.pathname, this.state.slide)
+  }
+
+  componentDidUpdate (prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.prepareRedirect(this.props.location.pathname, this.state.slide)
+    }
   }
 
   updatePrevious (id) {
     window.scrollTo(0, 0)
     this.setState({ previous: '/events/' + id })
-    this.prepareRedirect('/events/46', this.state.slide)
+    this.prepareRedirect('/events/' + id, this.state.slide)
   }
 
   prepareRedirect (route, slide) {
     let { previous, back, backText, next, nextText } = this.state
 
-    switch (route) {
+    const routeTest = /\/events\/.*/.test(route) ? '/events/id' : route
+
+    switch (routeTest) {
       case '/':
         back = this.state.previous || null
         backText = 'Event' || null
@@ -42,8 +53,8 @@ class MainView extends Component {
         next = this.state.previous || null
         nextText = 'Event'
         break
-      case '/events/46':
-        previous = '/events/46'
+      case '/events/id':
+        previous = route
         back = '/events'
         backText = 'Library'
         next = '/'
