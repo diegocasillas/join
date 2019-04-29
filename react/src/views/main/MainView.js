@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import HomeView from '../home/HomeView'
 import LoginView from '../login/LoginView'
+import LogoutView from '../login/LogoutView'
+import RegisterView from '../register/RegisterView'
 import LibraryView from '../library/LibraryView'
 import EventView from '../event/EventView'
 import EventCreationView from '../event/EventCreationView'
@@ -98,6 +100,8 @@ class MainView extends Component {
                   <Switch location={this.props.location}>
                     <Route exact path='/' render={() => <HomeView />} />
                     <Route exact path='/login' render={() => <LoginView toggleLogin={() => this.props.toggleLogin()} />} />
+                    <Route exact path='/register' render={() => <RegisterView toggleLogin={() => this.props.toggleLogin()} />} />
+                    <Route exact path='/logout' render={() => <LogoutView toggleLogin={() => this.props.toggleLogin()} />} />
                     <Route exact path='/events' render={() => <LibraryView />} />
                     <Route path='/events/:id' render={(props) => <EventView updatePrevious={(id) => this.updatePrevious(id)} {...props} />} />
                     <Route exact path='/create' render={(props) => <EventCreationView {...props} />} />
