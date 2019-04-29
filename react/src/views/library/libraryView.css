@@ -81,14 +81,14 @@ div{
     height:5%; 
     background-image: linear-gradient(to bottom, #a93b68 0%, #ff8471 100%)
   }
-
+ 
   .brush {
     font-family: Brush;
 }
 
   .mark {
     font-family: Mark;
-    background-color: inherit;
+    
 }
   .ubuntu-regular{
   font-family: Ubuntu-regular;
@@ -96,7 +96,11 @@ div{
   .ubuntu-bold{
   font-family: Ubuntu-bold;
 }
-.octicon{
+  .octicon{
   width: 20px;
   height: 25px;
+}
+  .description-background{
+  background-image: linear-gradient(to bottom, #c4526b 0%, #ff8471 100%) ;
+  color:white;
 }
