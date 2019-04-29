@@ -11,6 +11,7 @@ class Card extends Component {
     this.auth = new Auth()
   }
 
+
   handleClick (id) {
     this.setState({ loading: true })
     this.props.toggleJoin(id).then(() => this.setState({ loading: false }))
@@ -24,6 +25,7 @@ class Card extends Component {
 
     return this.props.name
   }
+
 
   partyDate () {
     const str = this.props.date
@@ -60,47 +62,59 @@ class Card extends Component {
 
           <div className='col-4 background2 p-0'>
             <div className='h-75' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <div style={{ display: 'flex-column', textAlign: 'center' }}>
-                <div className='colourtext ubuntu-bold ' style={{ fontSize: '100px' }}>
-                  {this.partyDate().day}
+                <div style={{ display: 'flex-column', textAlign: 'center' }}>
+                    <div className='colourtext ubuntu-bold ' style={{ fontSize: '100px' }}>
+                        {this.partyDate().day}
+                    </div>
+                    <div className='colourtext m-0 ubuntu-bold'
+                        style={{ position: 'relative', top: '-20px', fontSize: '35px' }}>
+                        {this.partyDate().month.toUpperCase()}
+                    </div>
                 </div>
-                <div className='colourtext m-0 ubuntu-bold' style={{ position: 'relative', top: '-20px', fontSize: '35px' }}>
-                  {this.partyDate().month.toUpperCase()}
-                </div>
-              </div>
             </div>
 
             <div className='h-25'>
-              <div className='gradient-border' />
-              {
-                this.auth.loggedIn()
-                  ? <button type='button' className='button1 m-0 p-0 brush' onClick={() => this.handleClick(this.props.id)}>
-                    {
-                      this.state.loading
-                        ? <Loader
-                          type='Oval'
-                          color='white'
-                          height='20'
-                          width='20'
-                        />
-                        : this.props.joined ? 'Joined' : 'Join'
-                    }
-                  </button>
-                  : <Link to='/login'><button type='button' className='button1 m-0 p-0 brush'>{this.props.joined ? 'Joined' : 'Join'}</button></Link>
-              }
+                <div className='gradient-border' />
+                {
+                    this.auth.loggedIn()
+                        ? <button type='button' className='button1 m-0 p-0 brush' onClick={() => this.handleClick(this.props.id)}>
+                            {
+                                this.state.loading
+                                    ? <Loader
+                                        type='Oval'
+                                        color='white'
+                                        height='20'
+                                        width='20'
+                                    />
+                                    : this.props.joined ? 'Joined' : 'Join'
+                            }
+                        </button>
+                        : <Link to='/login'>
+                            <button type='button' className='button1 m-0 p-0 brush'>{this.props.joined ? 'Joined' : 'Join'}
+                            </button>
+                        </Link>
+                }
+
             </div>
-          </div>
         </div>
-        {
-          this.props.showDescription
-            ? <div className='row bg-light'>
-              {this.props.description}
-            </div>
-            : null
-        }
-      </div >
-    )
-  }
+    </div>
+                {
+                    this.props.showDescription
+                        ?
+                        <div>
+                            <div className='row description-background ubuntu-regular mt-5'
+                                style={{ height: '50px', alignItems: 'center', justifyContent: 'center', fontSize: '32px' }}>
+                                <span className='brush'>Joined:</span> 69
+                            </div>
+                            <div className='row bg-light ubuntu-regular pl-3 pr-3' style={{ minHeight: '150px', overflow: 'auto' }}>
+                                {this.props.description}
+                            </div>
+                        </div>
+                        : null
+                }
+            </div >
+        )
+    }
 }
 
 export default Card

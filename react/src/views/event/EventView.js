@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 import Card from '../library/Card'
 
 class EventView extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = { event: null, loaded: false }
   }
+
 
   componentDidMount () {
     this.props.updatePrevious(this.props.match.params.id)
@@ -19,7 +20,7 @@ class EventView extends Component {
       .catch((error) => this.setState({ loaded: true }))
   }
 
-  render () {
+  render() {
     return (
       <div className='EventView container'>
         {
