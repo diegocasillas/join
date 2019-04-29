@@ -26,7 +26,7 @@ class EventView extends Component {
           this.state.event
             ? <div>
               {
-                this.state.event.manager === this.auth.getDecodedToken().id
+                this.auth.loggedIn() && this.state.event.manager === this.auth.getDecodedToken().id
                   ? <div className='text-center mb-2'>
                     <Link to={'/events/' + this.state.event.id + '/edit'}><button className='btn btn-primary' >Edit</button></Link>
                   </div> : null
