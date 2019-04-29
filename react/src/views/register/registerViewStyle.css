@@ -1,4 +1,11 @@
 .registerButton {
     border: none;
+    background-color: rgb(218, 115, 125) !important;
     background-image: linear-gradient(to bottom, #a93b68 0%, #ff8471 100%)
 }
+
+.registerButton:hover {
+    background-color: rgb(218, 115, 125) !important;
+    background-image: none;
+}
+

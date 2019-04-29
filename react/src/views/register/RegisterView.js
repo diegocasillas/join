@@ -29,7 +29,7 @@ class RegisterView extends Component {
     }
 
     return (
-      <div className='RegisterView'>
+      <div className='RegisterView container'>
         <div className='col-4 mt-5 mx-auto'>
           <div className='form-group'>
             <input type='text' className='form-control border-0 rounded-0 mb-3 mt-4 col-12 mx-auto' id='name' placeholder='Username' value={this.state.name} onChange={(event) => this.handleChange('name', event.target.value)} />
