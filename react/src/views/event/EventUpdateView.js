@@ -93,7 +93,7 @@ class EventUpdateView extends Component {
           </div>
 
           <div className='form-group text-center'>
-            <button className='buttonCreateEvent btn btn-warning text-light mr-3 mt-2' onClick={() => this.updateEvent()}>Create event</button>
+            <button className='buttonCreateEvent btn btn-warning text-light mr-3 mt-2' onClick={() => this.updateEvent()}>Update event</button>
             <Link to='/'><button className='buttonCancel btn btn-danger mt-2'>Cancel</button></Link>
           </div>
         </div>
