@@ -7,3 +7,13 @@
     border: none;
     background-color: #a93b68;
 }
+
+.buttonLogin:hover {
+    background-color: rgb(218, 115, 125) !important;
+    background-image: none;
+}
+
+.buttonRegister:hover {
+    background-color: rgb(218, 115, 125) !important;
+    background-image: none;
+}
