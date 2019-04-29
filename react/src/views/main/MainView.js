@@ -7,6 +7,7 @@ import LogoutView from '../login/LogoutView'
 import RegisterView from '../register/RegisterView'
 import LibraryView from '../library/LibraryView'
 import EventView from '../event/EventView'
+import EventUpdateView from '../event/EventUpdateView'
 import EventCreationView from '../event/EventCreationView'
 import Header from './header/Header'
 import SideNavBar from './SideNavBar'
@@ -84,7 +85,7 @@ class MainView extends Component {
             <div className='container-fluid'>
               <div className='row'>
                 <div className='col-md-1' />
-                {this.props.location.pathname !== '/create' ? <EventCreationButton /> : null}
+                {this.props.location.pathname !== '/create' ? <EventCreationButton route={this.props.location.pathname} /> : null}
               </div>
             </div>
           </div>
@@ -103,7 +104,8 @@ class MainView extends Component {
                     <Route exact path='/register' render={() => <RegisterView toggleLogin={() => this.props.toggleLogin()} />} />
                     <Route exact path='/logout' render={() => <LogoutView toggleLogin={() => this.props.toggleLogin()} />} />
                     <Route exact path='/events' render={() => <LibraryView />} />
-                    <Route path='/events/:id' render={(props) => <EventView updatePrevious={(id) => this.updatePrevious(id)} {...props} />} />
+                    <Route exact path='/events/:id' render={(props) => <EventView updatePrevious={(id) => this.updatePrevious(id)} {...props} />} />
+                    <Route path='/events/:id/edit' render={(props) => <EventUpdateView {...props} />} />
                     <Route exact path='/create' render={(props) => <EventCreationView {...props} />} />
 
                   </Switch>

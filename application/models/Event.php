@@ -25,6 +25,14 @@ class Event extends CI_Model
     return $query->result_array();
   }
 
+  public function updateEvent($id, $data)
+  {
+    $this->db->where('id', $id);
+    $this->db->update('events', $data);
+    $query = $this->db->get_where('events', array('id' => $id));
+    return $query->result_array();
+  }
+
   public function insertEvent($data)
   {
     $query = $this->db->insert('events', $data);
