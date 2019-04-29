@@ -109,15 +109,17 @@ const withEventInterface = (WrappedComponent, fetchFrom) => {
     render () {
       return this.state.loaded
         ? <WrappedComponent events={this.state.events} filterByCategory={(id) => this.filterByCategory(id)} toggleJoin={(id) => this.toggleJoin(id)} {...this.props} />
-        : <div className='row'>
-          <div className='mx-auto mt-5'>
+        : <div className='container'>
+          <div className='row'>
+            <div className='mx-auto mt-5'>
 
-            <Loader
-              type='ThreeDots'
-              color='white'
-              height='140'
-              width='140'
-            />
+              <Loader
+                type='ThreeDots'
+                color='white'
+                height='140'
+                width='140'
+              />
+            </div>
           </div>
         </div>
     }

@@ -16,10 +16,6 @@
     src:url(../../assets/Ubuntu-Regular.ttf);
 }
 
-.MainView {
-    min-height: 101vh;
-}
-
 .brush {
     font-family: Brush;
 }

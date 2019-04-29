@@ -10,7 +10,26 @@ class Auth {
   }
 
   setToken (token) {
-    localStorage.setItem('accessToken', token)
+    if (token) {
+      localStorage.setItem('accessToken', token)
+    }
+  }
+
+  register (name, email, password) {
+    const data = new FormData()
+
+    data.append('name', name)
+    data.append('email', email)
+    data.append('password', password)
+
+    return fetch('http://localhost/index.php/api/register', {
+      method: 'POST',
+      body: data
+    }).then(response => response.json())
+      .then(json => {
+        console.log(json)
+        this.setToken(json.access_token)
+      })
   }
 
   login (name, password) {
@@ -24,6 +43,10 @@ class Auth {
       body: data
     }).then(response => response.json())
       .then(json => this.setToken(json.access_token))
+  }
+
+  logout () {
+    localStorage.removeItem('accessToken')
   }
 
   loggedIn () {
