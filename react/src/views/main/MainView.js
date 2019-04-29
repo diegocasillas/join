@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import HomeView from '../home/HomeView'
 import LoginView from '../login/LoginView'
+import LogoutView from '../login/LogoutView'
+import RegisterView from '../register/RegisterView'
 import LibraryView from '../library/LibraryView'
 import EventView from '../event/EventView'
 import EventCreationView from '../event/EventCreationView'
@@ -16,20 +18,31 @@ import './transitions.css'
 class MainView extends Component {
   constructor (props) {
     super(props)
-    this.state = { previous: null, back: null, backText: null, next: '/events', nextText: 'Library', slide: 'slide-right' }
+    this.state = { previous: null, back: null, backText: null, next: null, nextText: null, slide: 'slide-right' }
     this.slide = 'slide-right'
+  }
+  componentDidMount () {
+    this.prepareRedirect(this.props.location.pathname, this.state.slide)
+  }
+
+  componentDidUpdate (prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.prepareRedirect(this.props.location.pathname, this.state.slide)
+    }
   }
 
   updatePrevious (id) {
     window.scrollTo(0, 0)
     this.setState({ previous: '/events/' + id })
-    this.prepareRedirect('/events/46', this.state.slide)
+    this.prepareRedirect('/events/' + id, this.state.slide)
   }
 
   prepareRedirect (route, slide) {
     let { previous, back, backText, next, nextText } = this.state
 
-    switch (route) {
+    const routeTest = /\/events\/.*/.test(route) ? '/events/id' : route
+
+    switch (routeTest) {
       case '/':
         back = this.state.previous || null
         backText = 'Event' || null
@@ -42,8 +55,8 @@ class MainView extends Component {
         next = this.state.previous || null
         nextText = 'Event'
         break
-      case '/events/46':
-        previous = '/events/46'
+      case '/events/id':
+        previous = route
         back = '/events'
         backText = 'Library'
         next = '/'
@@ -87,6 +100,8 @@ class MainView extends Component {
                   <Switch location={this.props.location}>
                     <Route exact path='/' render={() => <HomeView />} />
                     <Route exact path='/login' render={() => <LoginView toggleLogin={() => this.props.toggleLogin()} />} />
+                    <Route exact path='/register' render={() => <RegisterView toggleLogin={() => this.props.toggleLogin()} />} />
+                    <Route exact path='/logout' render={() => <LogoutView toggleLogin={() => this.props.toggleLogin()} />} />
                     <Route exact path='/events' render={() => <LibraryView />} />
                     <Route path='/events/:id' render={(props) => <EventView updatePrevious={(id) => this.updatePrevious(id)} {...props} />} />
                     <Route exact path='/create' render={(props) => <EventCreationView {...props} />} />
