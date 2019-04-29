@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import Auth from '../../Auth'
 import withEventInterface from '../../EventInterface'
 import CategoryBar from './CategoryBar'
 import Card from './Card'
 import './libraryView.css'
 
 class LibraryView extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = { events: this.props.events }
   }
 
-  render () {
+  render() {
     return (
       <div className='LibraryView container'>
         <CategoryBar filterByCategory={(id) => this.props.filterByCategory(id)} />
@@ -21,7 +19,7 @@ class LibraryView extends Component {
             this.state.events.length !== 0
               ? this.state.events.map((event) => {
                 return (
-                  <div className='col-12 mb-4'>
+                  <div className='col-12 mb-5'>
                     <Card
                       id={event.id}
                       name={event.name}

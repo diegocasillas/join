@@ -27,6 +27,25 @@ class EventController extends CI_Controller
       ->set_output(json_encode($data['events']));
   }
 
+  public function update($id)
+  {
+    $data = array(
+      'name' => $this->input->post('name'),
+      'description' => $this->input->post('description'),
+      'thumbnail' => $this->input->post('thumbnail'),
+      'location' => $this->input->post('location'),
+      'date' => $this->input->post('date'),
+      'category' => $this->input->post('category')
+    );
+
+    $data['events'] = $this->event->updateEvent($id, $data);
+
+    $this->output
+      ->set_status_header(200)
+      ->set_content_type('application/json')
+      ->set_output(json_encode($data['events']));
+  }
+
   public function create()
   {
     $this->load->helper(array('form', 'url'));

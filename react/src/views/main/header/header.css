@@ -2,12 +2,6 @@
    padding-top: 20px;
 }
 
-/* Text style */
-ul 
-{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-}
 
 /* Link style */
 li 
@@ -15,21 +9,22 @@ li
     font-size: 16px;
 }
 
-.nav-link {
+.login-link {
     color: white;
-    font-family: fantasy;
+    font-family: Mark;
 }
 
-.nav-link:hover {
+.login-link:hover {
     color: rgb(240, 240, 240);
+    text-decoration: none;
 }
 
-.nav-link:active {
+.login-link:active {
     color: rgb(226, 206, 206);
 }
 
 .logo {
-    padding-left: 20px;
+    padding-left: 15px;
 }
 
 .searchBox {
@@ -37,5 +32,5 @@ li
 }
 
 .loginButton {
-    padding-left: 115px;
+    padding-right: 15px;
 }

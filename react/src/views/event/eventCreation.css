@@ -1,0 +1,19 @@
+.buttonCreateEvent {
+    border: none;
+    background-color: #ff8471;
+}
+
+.buttonCancel {
+    border: none;
+    background-color: #a93b68;
+}
+
+.buttonCreateEvent:hover {
+    background-color: rgb(218, 115, 125) !important;
+    background-image: none;
+}
+
+.buttonCancel:hover {
+    background-color: rgb(218, 115, 125) !important;
+    background-image: none;
+}

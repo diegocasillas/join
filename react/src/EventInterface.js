@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Auth from './Auth'
 import Loader from 'react-loader-spinner'
 
-const withEventInterface = (WrappedComponent, user) => {
+const withEventInterface = (WrappedComponent, fetchFrom) => {
   return class extends Component {
     constructor (props) {
       super(props)
@@ -10,10 +10,10 @@ const withEventInterface = (WrappedComponent, user) => {
       this.state = { events: [], loaded: false }
     }
 
-    fetchEvents (user, category) {
+    fetchEvents (fetchFrom, category) {
       let uri = 'http://localhost/index.php/api/events'
 
-      if (user) {
+      if (fetchFrom === 'user') {
         uri = 'http://localhost/index.php/api/users/' + this.auth.getDecodedToken().id + '/events'
       } else if (category && category !== 0) {
         uri = 'http://localhost/index.php/api/events?category=' + category
@@ -47,7 +47,7 @@ const withEventInterface = (WrappedComponent, user) => {
     filterByCategory (category) {
       this.setState({ loaded: false })
 
-      this.fetchEvents(category)
+      this.fetchEvents(fetchFrom, category)
         .then(events => {
           this.setState({ events })
           return this.fetchAttendances(events)
@@ -97,7 +97,7 @@ const withEventInterface = (WrappedComponent, user) => {
     }
 
     componentDidMount () {
-      this.fetchEvents(user)
+      this.fetchEvents(fetchFrom)
         .then(events => {
           this.setState({ events })
           return this.fetchAttendances(events)
@@ -109,15 +109,17 @@ const withEventInterface = (WrappedComponent, user) => {
     render () {
       return this.state.loaded
         ? <WrappedComponent events={this.state.events} filterByCategory={(id) => this.filterByCategory(id)} toggleJoin={(id) => this.toggleJoin(id)} {...this.props} />
-        : <div className='row'>
-          <div className='mx-auto mt-5'>
+        : <div className='container'>
+          <div className='row'>
+            <div className='mx-auto mt-5'>
 
-            <Loader
-              type='ThreeDots'
-              color='white'
-              height='140'
-              width='140'
-            />
+              <Loader
+                type='ThreeDots'
+                color='white'
+                height='140'
+                width='140'
+              />
+            </div>
           </div>
         </div>
     }

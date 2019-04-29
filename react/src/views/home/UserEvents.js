@@ -62,4 +62,4 @@ class UserEvents extends Component {
   }
 }
 
-export default withEventInterface(UserEvents, true)
+export default withEventInterface(UserEvents, 'user')

@@ -7,9 +7,13 @@
     font-family:Mark;
     src:url(../../assets/Marker_Felt_Regular.ttf);
 }
-
-.MainView {
-    min-height: 101vh;
+@font-face{
+    font-family: Ubuntu-bold;
+    src:url(../../assets/Ubuntu-Bold.ttf);
+}
+@font-face{
+    font-family: Ubuntu-regular;
+    src:url(../../assets/Ubuntu-Regular.ttf);
 }
 
 .brush {
@@ -32,4 +36,8 @@ body{
 .btn-primary:hover {
     background-color: rgb(218, 115, 125) !important;
     background-image: none;
+}
+
+.padding-fix {
+    padding: 0 70px;
 }

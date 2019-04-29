@@ -15,16 +15,14 @@ class HomeView extends Component {
   render () {
     return (
       <div className='HomeView text-light container'>
-        <div className='text-center mt-5'>
+        <div className='text-center mt-5 mb-5 pb-5'>
           <img src={welcomeMessage} />
         </div>
-
         <div className='text-center mb-5'>
           <Link to='/events'><button className='btn btn-primary mx-auto'>Events</button></Link>
         </div>
 
-        <UserEvents id='myEvents' title='My events' />
-        <UserEvents id='latestEvents' title='Latest events' />
+        { this.auth.loggedIn() && <UserEvents id='myEvents' title='My events' /> }
       </div>
     )
   }
