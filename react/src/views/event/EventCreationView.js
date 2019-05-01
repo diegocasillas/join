@@ -1,33 +1,43 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
+import Calendar from 'react-calendar'
 import Auth from '../../Auth'
-import './eventCreation.css';
+import './eventCreation.css'
 
 class EventCreationView extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
-    this.state = { name: '', description: '', date: '', location: '', category: '', categories: [], toEvents: false, eventId: null }
+    this.state = { name: '', description: '', date: '', formattedDate: '', location: '', category: '', categories: [], toEvents: false, eventId: null }
     this.auth = new Auth()
   }
 
-  componentDidMount() {
+  componentDidMount () {
     fetch('http://localhost/index.php/api/categories', {
       method: 'GET'
     }).then(response => response.json())
       .then(json => this.setState({ categories: json }))
   }
 
-  handleChange(field, value) {
+  handleChange (field, value) {
     this.setState({ [field]: value })
   }
 
-  createEvent() {
+  handleCalendar (date) {
+    const date2 = new Date(date)
+
+    const year = date2.getFullYear()
+    const month = date2.getMonth()
+    const day = date2.getDate()
+    this.setState({ date: date, formattedDate: year + '-' + month + '-' + day })
+  }
+
+  createEvent () {
     const data = new FormData()
 
     data.append('name', this.state.name)
     data.append('description', this.state.description)
     data.append('location', this.state.location)
-    data.append('date', this.state.date)
+    data.append('date', this.state.formattedDate)
     data.append('category', this.state.category)
     data.append('thumbnail', 'asdadsads')
     data.append('manager', this.auth.getDecodedToken().id)
@@ -39,7 +49,7 @@ class EventCreationView extends Component {
       .then(json => this.setState({ toEvents: true, eventId: json[0].id }))
   }
 
-  render() {
+  render () {
     if (this.state.toEvents) {
       this.setState({ toEvents: false })
       return <Redirect to={`/events/${this.state.eventId}`} />
@@ -49,28 +59,25 @@ class EventCreationView extends Component {
       <div className='EventCreationView container mt-5'>
         <div className='col-5 mx-auto'>
           <div className='form-group'>
-            <label for='name'></label>
+            <label for='name' />
             <input type='text' className='form-control border-0 rounded-0 mb-3 col-12 mx-auto' id='name' placeholder='Write here the name of your event' value={this.state.name} onChange={(event) => this.handleChange('name', event.target.value)} />
           </div>
 
           <div className='form-group'>
-            <label for='description'></label>
+            <label for='description' />
             <textarea className='form-control border-0 rounded-0 mb-3 col-12 mx-auto' id='description' aria-label='With textarea' placeholder='What is your event about? Write something descriptive so people feel like joining!' value={this.state.description} onChange={(event) => this.handleChange('description', event.target.value)} />
           </div>
 
-          <div className='row'>
-            <div className='form-group col-6'>
-              <label for='location'></label>
-              <input type='text' className='form-control border-0 rounded-0 mb-3 col-12 mx-auto' id='location' placeholder='Where?' value={this.state.location} onChange={(event) => this.handleChange('location', event.target.value)} />
-            </div>
-            <div className='form-group col-6'>
-              <label for='date'></label>
-              <input type='text' className='form-control border-0 rounded-0 mb-3 col-12 mx-auto' id='date' placeholder='When does it start?' value={this.state.date} onChange={(event) => this.handleChange('date', event.target.value)} />
-            </div>
+          <div className='form-group'>
+            <label for='location' />
+            <input type='text' className='form-control border-0 rounded-0 mb-3 col-12 mx-auto' id='location' placeholder='Where?' value={this.state.location} onChange={(event) => this.handleChange('location', event.target.value)} />
+          </div>
+          <div className='form-group'>
+            <Calendar onChange={(date) => this.handleCalendar(date)} value={this.state.date} />
           </div>
 
           <div className='form-group'>
-            <label for='category'></label>
+            <label for='category' />
             <select class='form-control border-0 rounded-0 mb-3 col-12 mx-auto' id='category' onChange={(event) => this.handleChange('category', event.target.value)}>
               <option>Select a category</option>
               {this.state.categories.map(category => <option value={category.id}>{category.name}</option>)}
@@ -78,7 +85,7 @@ class EventCreationView extends Component {
           </div>
 
           <div className='form-group'>
-            <label for='thumbnail'></label>
+            <label for='thumbnail' />
             <div className='custom-file'>
               <input type='file' className='custom-file-input' id='thumbnail' />
               <label className='custom-file-label border-0 rounded-0 mb-3 col-12 mx-auto' for='thumbnail'>Add a thumbnail picture</label>

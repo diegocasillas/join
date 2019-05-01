@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
+import Calendar from 'react-calendar'
 import Auth from '../../Auth'
 import './eventCreation.css'
 
@@ -11,21 +12,44 @@ class EventUpdateView extends Component {
   }
 
   componentDidMount () {
+    this.mounted = true
     fetch('http://localhost/index.php/api/events/' + this.props.match.params.id)
       .then((response) => response.json())
       .then((json) => {
-        this.setState({ event: json[0], loaded: true })
+        const date = new Date(json[0].date)
+        date.setMonth(date.getMonth() + 1)
+        const year = date.getFullYear()
+        const month = date.getMonth()
+        const day = date.getDate()
+        json[0].date = date
+        json.formattedDate = year + '-' + month + '-' + day
+        this.mounted && this.setState({ event: json[0], loaded: true })
       })
-      .catch((error) => this.setState({ loaded: true }))
+      .catch((error) => this.mounted && this.setState({ loaded: true }))
 
     fetch('http://localhost/index.php/api/categories', {
       method: 'GET'
     }).then(response => response.json())
-      .then(json => this.setState({ categories: json }))
+      .then(json => this.mounted && this.setState({ categories: json }))
+  }
+
+  componentWillUnmount () {
+    this.mounted = false
   }
 
   handleChange (field, value) {
     this.state.event[field] = value
+    this.setState({ event: this.state.event })
+  }
+
+  handleCalendar (date) {
+    const date2 = new Date(date)
+
+    const year = date2.getFullYear()
+    const month = date2.getMonth()
+    const day = date2.getDate()
+    this.state.event.date = date
+    this.state.event.formattedDate = year + '-' + month + '-' + day
     this.setState({ event: this.state.event })
   }
 
@@ -35,7 +59,7 @@ class EventUpdateView extends Component {
     data.append('name', this.state.event.name)
     data.append('description', this.state.event.description)
     data.append('location', this.state.event.location)
-    data.append('date', this.state.event.date)
+    data.append('date', this.state.event.formattedDate)
     data.append('category', this.state.event.category)
     data.append('thumbnail', 'asdadsads')
 
@@ -65,15 +89,14 @@ class EventUpdateView extends Component {
             <textarea className='form-control border-0 rounded-0 mb-3 col-12 mx-auto' id='description' aria-label='With textarea' placeholder='What is your event about? Write something descriptive so people feel like joining!' value={this.state.event.description} onChange={(event) => this.handleChange('description', event.target.value)} />
           </div>
 
-          <div className='row'>
-            <div className='form-group col-6'>
-              <label for='location' />
-              <input type='text' className='form-control border-0 rounded-0 mb-3 col-12 mx-auto' id='location' placeholder='Where?' value={this.state.event.location} onChange={(event) => this.handleChange('location', event.target.value)} />
-            </div>
-            <div className='form-group col-6'>
-              <label for='date' />
-              <input type='text' className='form-control border-0 rounded-0 mb-3 col-12 mx-auto' id='date' placeholder='When does it start?' value={this.state.event.date} onChange={(event) => this.handleChange('date', event.target.value)} />
-            </div>
+          <div className='form-group'>
+            <label for='location' />
+            <input type='text' className='form-control border-0 rounded-0 mb-3 col-12 mx-auto' id='location' placeholder='Where?' value={this.state.event.location} onChange={(event) => this.handleChange('location', event.target.value)} />
+          </div>
+
+          <div className='form-group'>
+            <label for='date' />
+            <Calendar onChange={(date) => this.handleCalendar(date)} value={this.state.event.date} />
           </div>
 
           <div className='form-group'>
