@@ -36,6 +36,7 @@ class EventView extends Component {
                       nameLength={20}
                       joined={event.joined}
                       toggleJoin={(eventId) => this.props.toggleJoin(eventId)}
+                      showDescription
                     />
                   )
                 })
