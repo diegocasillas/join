@@ -12,6 +12,9 @@ class Attendance extends CI_Model
     if (isset($_GET['user'])) {
       $user = $_GET['user'];
       $query = $this->db->order_by('id', 'DESC')->get_where('attendance', array('userId' => $user));
+    } else if (isset($_GET['event'])) {
+      $event = $_GET['event'];
+      $query = $this->db->order_by('id', 'DESC')->get_where('attendance', array('eventId' => $event));
     } else {
       $query = $this->db->order_by('id', 'DESC')->get('attendance');
     }

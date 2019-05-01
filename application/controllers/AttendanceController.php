@@ -12,6 +12,7 @@ class AttendanceController extends CI_Controller
 
   public function index()
   {
+
     $data['attendances'] = $this->attendance->getAttendances();
     $this->output
       ->set_status_header(200)

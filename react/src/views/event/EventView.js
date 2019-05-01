@@ -7,7 +7,17 @@ class EventView extends Component {
   constructor (props) {
     super(props)
     this.auth = new Auth()
-    this.state = { event: this.props.events }
+    this.state = { event: this.props.events, attendanceCount: '' }
+  }
+
+  componentDidMount () {
+    this.getCount()
+  }
+
+  getCount () {
+    fetch('http://localhost/index.php/api/attendance?event=' + this.props.match.params.id)
+      .then((response) => response.json())
+      .then((attendance) => this.setState({ attendanceCount: attendance.length }))
   }
 
   render () {
@@ -37,6 +47,8 @@ class EventView extends Component {
                       joined={event.joined}
                       toggleJoin={(eventId) => this.props.toggleJoin(eventId)}
                       showDescription
+                      count={this.state.attendanceCount}
+                      getCount={() => this.getCount()}
                     />
                   )
                 })
