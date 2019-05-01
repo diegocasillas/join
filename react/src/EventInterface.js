@@ -15,6 +15,8 @@ const withEventInterface = (WrappedComponent, fetchFrom) => {
 
       if (fetchFrom === 'user') {
         uri = 'http://localhost/index.php/api/users/' + this.auth.getDecodedToken().id + '/events'
+      } else if (fetchFrom === 'event') {
+        uri = 'http://localhost/index.php/api/events/' + this.props.match.params.id
       } else if (category && category !== 0) {
         uri = 'http://localhost/index.php/api/events?category=' + category
       }
