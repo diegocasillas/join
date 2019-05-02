@@ -85,7 +85,7 @@ class MainView extends Component {
             <div className='container-fluid'>
               <div className='row'>
                 <div className='col-md-1' />
-                {this.props.location.pathname !== '/create' ? <EventCreationButton route={this.props.location.pathname} /> : null}
+                {this.props.loggedIn && this.props.location.pathname !== '/create' ? <EventCreationButton route={this.props.location.pathname} /> : null}
               </div>
             </div>
           </div>
