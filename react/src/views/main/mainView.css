@@ -41,3 +41,19 @@ body{
 .padding-fix {
     padding: 0 70px;
 }
+
+.react-calendar {
+    width: 100%;
+}
+
+.react-calendar__tile--visited {
+    background-image: linear-gradient(to bottom, #a93b68 0%, #ff8471 100%)!important;    
+}
+
+.react-calendar__tile--active:enabled:hover {
+    background-image: linear-gradient(to bottom, #a93b68 0%, #ff8471 100%)!important;    
+}
+
+.react-calendar__tile--active {
+    background-image: linear-gradient(to bottom, #a93b68 0%, #ff8471 100%)!important;    
+}
