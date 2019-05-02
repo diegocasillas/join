@@ -43,7 +43,7 @@ class Card extends Component {
       <div className='Card col-9 p-0 shadow mx-auto'>
         <div className='row'>
           <Link
-            style={{ textDecoration: 'none', color: 'white' }}
+            style={{ textDecoration: 'none', color: 'white', backgroundImage: `url(${this.props.thumbnail})` }}
             to={`/events/${this.props.id}`}
             className='col-8 background1 p-0 d-flex align-items-end'
           >

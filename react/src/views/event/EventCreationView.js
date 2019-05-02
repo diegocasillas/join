@@ -39,7 +39,7 @@ class EventCreationView extends Component {
     data.append('location', this.state.location)
     data.append('date', this.state.formattedDate)
     data.append('category', this.state.category)
-    data.append('thumbnail', 'asdadsads')
+    data.append('thumbnail', this.state.thumbnail)
     data.append('manager', this.auth.getDecodedToken().id)
 
     fetch('http://localhost/index.php/api/events', {
@@ -70,8 +70,8 @@ class EventCreationView extends Component {
 
           <div className='form-group'>
             <label for='location' />
-            <input type='text' className='form-control border-0 rounded-0 mb-3 col-12 mx-auto' id='location' placeholder='Where?' value={this.state.location} onChange={(event) => this.handleChange('location', event.target.value)} />
-          </div>
+
+          </div> <input type='text' className='form-control border-0 rounded-0 mb-3 col-12 mx-auto' id='location' placeholder='Where?' value={this.state.location} onChange={(event) => this.handleChange('location', event.target.value)} />
           <div className='form-group'>
             <Calendar onChange={(date) => this.handleCalendar(date)} value={this.state.date} />
           </div>
@@ -86,10 +86,7 @@ class EventCreationView extends Component {
 
           <div className='form-group'>
             <label for='thumbnail' />
-            <div className='custom-file'>
-              <input type='file' className='custom-file-input' id='thumbnail' />
-              <label className='custom-file-label border-0 rounded-0 mb-3 col-12 mx-auto' for='thumbnail'>Add a thumbnail picture</label>
-            </div>
+            <input type='text' className='form-control border-0 rounded-0 mb-3 col-12 mx-auto' id='thumbnail' placeholder='Add an image URL' value={this.state.thumbnail} onChange={(event) => this.handleChange('thumbnail', event.target.value)} />
           </div>
 
           <div className='form-group text-center'>

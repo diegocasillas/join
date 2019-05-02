@@ -61,7 +61,7 @@ class EventUpdateView extends Component {
     data.append('location', this.state.event.location)
     data.append('date', this.state.event.formattedDate)
     data.append('category', this.state.event.category)
-    data.append('thumbnail', 'asdadsads')
+    data.append('thumbnail', this.state.event.thumbnail)
 
     fetch('http://localhost/index.php/api/events/' + this.props.match.params.id, {
       method: 'POST',
@@ -109,10 +109,7 @@ class EventUpdateView extends Component {
 
           <div className='form-group'>
             <label for='thumbnail' />
-            <div className='custom-file'>
-              <input type='file' className='custom-file-input' id='thumbnail' />
-              <label className='custom-file-label border-0 rounded-0 mb-3 col-12 mx-auto' for='thumbnail'>Add a thumbnail picture</label>
-            </div>
+            <input type='text' className='form-control border-0 rounded-0 mb-3 col-12 mx-auto' id='thumbnail' placeholder='Add an image URL' value={this.state.event.thumbnail} onChange={(event) => this.handleChange('thumbnail', event.target.value)} />
           </div>
 
           <div className='form-group text-center'>
