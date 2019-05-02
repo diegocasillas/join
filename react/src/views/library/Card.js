@@ -34,7 +34,7 @@ class Card extends Component {
     const str = this.props.date
     const dateArray = str.split('-')
     const options = { year: 'numeric', month: 'short', day: '2-digit' }
-    const partydate = Intl.DateTimeFormat('en-GB', options).format(new Date(Date.UTC(dateArray[0], dateArray[1] - 1, dateArray[2])))
+    const partydate = Intl.DateTimeFormat('en-GB', options).format(new Date(Date.UTC(dateArray[0], dateArray[1], dateArray[2])))
     const datesplit = partydate.split(' ')
     return { day: datesplit[0], month: datesplit[1] }
   }
