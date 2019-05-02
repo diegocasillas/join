@@ -6,7 +6,7 @@ import profile from './profileIcon.png'
 import './header.css'
 
 class Header extends Component {
-  render() {
+  render () {
     return (
       <div className='Header'>
         <nav className='container-fluid headerBox'>
@@ -19,7 +19,7 @@ class Header extends Component {
                 </Link>
               </div>
 
-              <Search />
+              <Search redirect={() => this.props.redirect()} path={this.props.path} getSearchText={(searchText) => this.props.getSearchText(searchText)} />
 
               <div className='col-2 top-links'>
                 <li className='loginButton nav-item  text-right'>
