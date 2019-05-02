@@ -12,7 +12,7 @@ class EventCreationView extends Component {
   }
 
   componentDidMount () {
-    fetch('http://localhost/index.php/api/categories', {
+    fetch('http://www.students.oamk.fi/~c8blos00/index.php/api/categories', {
       method: 'GET'
     }).then(response => response.json())
       .then(json => this.setState({ categories: json }))
@@ -42,7 +42,7 @@ class EventCreationView extends Component {
     data.append('thumbnail', this.state.thumbnail)
     data.append('manager', this.auth.getDecodedToken().id)
 
-    fetch('http://localhost/index.php/api/events', {
+    fetch('http://www.students.oamk.fi/~c8blos00/index.php/api/events', {
       method: 'POST',
       body: data
     }).then(response => response.json())

@@ -11,14 +11,14 @@ const withEventInterface = (WrappedComponent, fetchFrom) => {
     }
 
     fetchEvents (fetchFrom, category) {
-      let uri = 'http://localhost/index.php/api/events'
+      let uri = 'http://www.students.oamk.fi/~c8blos00/index.php/api/events'
 
       if (fetchFrom === 'user') {
-        uri = 'http://localhost/index.php/api/users/' + this.auth.getDecodedToken().id + '/events'
+        uri = 'http://www.students.oamk.fi/~c8blos00/index.php/api/users/' + this.auth.getDecodedToken().id + '/events'
       } else if (fetchFrom === 'event') {
-        uri = 'http://localhost/index.php/api/events/' + this.props.match.params.id
+        uri = 'http://www.students.oamk.fi/~c8blos00/index.php/api/events/' + this.props.match.params.id
       } else if (category && category !== 0) {
-        uri = 'http://localhost/index.php/api/events?category=' + category
+        uri = 'http://www.students.oamk.fi/~c8blos00/index.php/api/events?category=' + category
       }
 
       return fetch(uri)
@@ -28,7 +28,7 @@ const withEventInterface = (WrappedComponent, fetchFrom) => {
 
     fetchAttendances (events) {
       if (this.auth.loggedIn()) {
-        return fetch('http://localhost/index.php/api/attendance?user=' + this.auth.getDecodedToken().id)
+        return fetch('http://www.students.oamk.fi/~c8blos00/index.php/api/attendance?user=' + this.auth.getDecodedToken().id)
           .then(response => response.json())
           .then(attendances => {
             attendances.forEach((attendance) => {
@@ -62,7 +62,7 @@ const withEventInterface = (WrappedComponent, fetchFrom) => {
       const { events } = this.state
 
       return fetch(
-        'http://localhost/index.php/api/attendance/' + id,
+        'http://www.students.oamk.fi/~c8blos00/index.php/api/attendance/' + id,
         { method: 'POST' }
       ).then((response) => response.json())
     }
@@ -73,7 +73,7 @@ const withEventInterface = (WrappedComponent, fetchFrom) => {
       data.append('userId', this.auth.getDecodedToken().id)
       data.append('eventId', eventId)
 
-      return fetch('http://localhost/index.php/api/attendance', {
+      return fetch('http://www.students.oamk.fi/~c8blos00/index.php/api/attendance', {
         method: 'POST',
         body: data
       }).then(response => response.json())

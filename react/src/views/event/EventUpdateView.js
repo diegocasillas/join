@@ -13,7 +13,7 @@ class EventUpdateView extends Component {
 
   componentDidMount () {
     this.mounted = true
-    fetch('http://localhost/index.php/api/events/' + this.props.match.params.id)
+    fetch('http://www.students.oamk.fi/~c8blos00/index.php/api/events/' + this.props.match.params.id)
       .then((response) => response.json())
       .then((json) => {
         const date = new Date(json[0].date)
@@ -27,7 +27,7 @@ class EventUpdateView extends Component {
       })
       .catch((error) => this.mounted && this.setState({ loaded: true }))
 
-    fetch('http://localhost/index.php/api/categories', {
+    fetch('http://www.students.oamk.fi/~c8blos00/index.php/api/categories', {
       method: 'GET'
     }).then(response => response.json())
       .then(json => this.mounted && this.setState({ categories: json }))
@@ -63,7 +63,7 @@ class EventUpdateView extends Component {
     data.append('category', this.state.event.category)
     data.append('thumbnail', this.state.event.thumbnail)
 
-    fetch('http://localhost/index.php/api/events/' + this.props.match.params.id, {
+    fetch('http://www.students.oamk.fi/~c8blos00/index.php/api/events/' + this.props.match.params.id, {
       method: 'POST',
       body: data
     }).then(response => response.json())

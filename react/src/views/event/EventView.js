@@ -15,7 +15,7 @@ class EventView extends Component {
   }
 
   getCount () {
-    fetch('http://localhost/index.php/api/attendance?event=' + this.props.match.params.id)
+    fetch('http://www.students.oamk.fi/~c8blos00/index.php/api/attendance?event=' + this.props.match.params.id)
       .then((response) => response.json())
       .then((attendance) => this.setState({ attendanceCount: attendance.length }))
   }
