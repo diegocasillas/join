@@ -8,6 +8,7 @@
     "jwt-decode": "^2.2.0",
     "octicons": "^8.5.0",
     "react": "^16.8.4",
+    "react-calendar": "^2.18.1",
     "react-dom": "^16.8.4",
     "react-loader-spinner": "^2.3.0",
     "react-router-dom": "^5.0.0",
@@ -23,7 +24,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel react/src/index.html -d react/dist",
-    "build": "rm -r react/dist && parcel build react/src/index.js -d react/dist"
+    "build": "rm -r react/dist && parcel build react/src/index.html -d react/dist --public-url ./"
   },
   "repository": {
     "type": "git",

@@ -5,19 +5,28 @@ import Card from './Card'
 import './libraryView.css'
 
 class LibraryView extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
-    this.state = { events: this.props.events }
+    this.state = { events: this.props.events, filteredEvents: this.props.events }
   }
 
-  render() {
+  getFilteredEvents () {
+    console.log(this.props.searchText)
+
+    return this.props.searchText
+      ? this.state.events.filter(event => event.name.toLowerCase().includes(this.props.searchText.toLowerCase()) || event.location.toLowerCase().includes(this.props.searchText.toLowerCase()))
+      : this.state.events
+  }
+
+  render () {
+    const events = this.getFilteredEvents()
     return (
       <div className='LibraryView container'>
         <CategoryBar filterByCategory={(id) => this.props.filterByCategory(id)} />
         <div className='row'>
           {
-            this.state.events.length !== 0
-              ? this.state.events.map((event) => {
+            events.length !== 0
+              ? events.map((event) => {
                 return (
                   <div className='col-12 mb-5'>
                     <Card
@@ -35,7 +44,7 @@ class LibraryView extends Component {
                 )
               })
               : <div className='mx-auto mt-5'>
-                <h2>No events</h2>
+                <h2 className='text-light ubuntu-bold'>No events</h2>
               </div>
           }
         </div>

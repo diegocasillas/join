@@ -19,7 +19,7 @@ import './transitions.css'
 class MainView extends Component {
   constructor (props) {
     super(props)
-    this.state = { previous: null, back: null, backText: null, next: null, nextText: null, slide: 'slide-right' }
+    this.state = { previous: null, back: null, backText: null, next: null, nextText: null, slide: 'slide-right', searchText: '' }
     this.slide = 'slide-right'
   }
   componentDidMount () {
@@ -73,6 +73,10 @@ class MainView extends Component {
     setTimeout(() => this.props.history.push(route), 100)
   }
 
+  getSearchText (searchText) {
+    this.setState({ searchText: searchText })
+  }
+
   render () {
     return (
       <div className='MainView background'>
@@ -81,11 +85,11 @@ class MainView extends Component {
         <div className='padding-fix'>
           <div className='sticky-top'>
 
-            <Header loggedIn={this.props.loggedIn} />
+            <Header loggedIn={this.props.loggedIn} redirect={() => this.redirect('/events', this.state.slide)} path={this.props.location.pathname} getSearchText={(searchText) => this.getSearchText(searchText)} />
             <div className='container-fluid'>
               <div className='row'>
                 <div className='col-md-1' />
-                {this.props.location.pathname !== '/create' ? <EventCreationButton route={this.props.location.pathname} /> : null}
+                {this.props.loggedIn && this.props.location.pathname !== '/create' ? <EventCreationButton route={this.props.location.pathname} /> : null}
               </div>
             </div>
           </div>
@@ -103,7 +107,7 @@ class MainView extends Component {
                     <Route exact path='/login' render={() => <LoginView toggleLogin={() => this.props.toggleLogin()} />} />
                     <Route exact path='/register' render={() => <RegisterView toggleLogin={() => this.props.toggleLogin()} />} />
                     <Route exact path='/logout' render={() => <LogoutView toggleLogin={() => this.props.toggleLogin()} />} />
-                    <Route exact path='/events' render={() => <LibraryView />} />
+                    <Route exact path='/events' render={() => <LibraryView searchText={this.state.searchText} />} />
                     <Route exact path='/events/:id' render={(props) => <EventView updatePrevious={(id) => this.updatePrevious(id)} {...props} />} />
                     <Route path='/events/:id/edit' render={(props) => <EventUpdateView {...props} />} />
                     <Route exact path='/create' render={(props) => <EventCreationView {...props} />} />

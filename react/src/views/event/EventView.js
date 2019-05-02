@@ -2,21 +2,22 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Card from '../library/Card'
 import Auth from '../../Auth'
+import withEventInterface from '../../EventInterface'
 class EventView extends Component {
   constructor (props) {
     super(props)
     this.auth = new Auth()
-    this.state = { event: null, loaded: false }
+    this.state = { event: this.props.events, attendanceCount: '' }
   }
 
   componentDidMount () {
-    this.props.updatePrevious(this.props.match.params.id)
-    fetch('http://localhost/index.php/api/events/' + this.props.match.params.id)
+    this.getCount()
+  }
+
+  getCount () {
+    fetch('http://www.students.oamk.fi/~c8blos00/index.php/api/attendance?event=' + this.props.match.params.id)
       .then((response) => response.json())
-      .then((json) => {
-        this.setState({ event: json[0], loaded: true })
-      })
-      .catch((error) => this.setState({ loaded: true }))
+      .then((attendance) => this.setState({ attendanceCount: attendance.length }))
   }
 
   render () {
@@ -26,22 +27,32 @@ class EventView extends Component {
           this.state.event
             ? <div>
               {
-                this.auth.loggedIn() && this.state.event.manager === this.auth.getDecodedToken().id
+                this.auth.loggedIn() && this.state.event[0].manager === this.auth.getDecodedToken().id
                   ? <div className='text-center mb-2'>
-                    <Link to={'/events/' + this.state.event.id + '/edit'}><button className='btn btn-primary' >Edit</button></Link>
+                    <Link to={'/events/' + this.state.event[0].id + '/edit'}><button className='btn btn-primary' >Edit</button></Link>
                   </div> : null
-              }
 
-              <Card
-                id={this.state.event.id}
-                name={this.state.event.name}
-                thumbnail={this.state.event.thumbnail}
-                description={this.state.event.description}
-                location={this.state.event.location}
-                date={this.state.event.date}
-                nameLength={20}
-                showDescription
-              />
+              }
+              {
+                this.state.event.map((event) => {
+                  return (
+                    <Card
+                      id={event.id}
+                      name={event.name}
+                      thumbnail={event.thumbnail}
+                      description={event.description}
+                      location={event.location}
+                      date={event.date}
+                      nameLength={20}
+                      joined={event.joined}
+                      toggleJoin={(eventId) => this.props.toggleJoin(eventId)}
+                      showDescription
+                      count={this.state.attendanceCount}
+                      getCount={() => this.getCount()}
+                    />
+                  )
+                })
+              }
             </div>
             : null}
 
@@ -50,4 +61,4 @@ class EventView extends Component {
   }
 }
 
-export default EventView
+export default withEventInterface(EventView, 'event')

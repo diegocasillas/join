@@ -22,7 +22,7 @@ class Auth {
     data.append('email', email)
     data.append('password', password)
 
-    return fetch('http://localhost/index.php/api/register', {
+    return fetch('http://www.students.oamk.fi/~c8blos00/index.php/api/register', {
       method: 'POST',
       body: data
     }).then(response => response.json())
@@ -38,7 +38,7 @@ class Auth {
     data.append('name', name)
     data.append('password', password)
 
-    return fetch('http://localhost/index.php/api/login', {
+    return fetch('http://www.students.oamk.fi/~c8blos00/index.php/api/login', {
       method: 'POST',
       body: data
     }).then(response => response.json())

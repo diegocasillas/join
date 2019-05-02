@@ -8,7 +8,7 @@ class CategoryBar extends Component {
   }
 
   componentDidMount () {
-    fetch('http://localhost/index.php/api/categories', {
+    fetch('http://www.students.oamk.fi/~c8blos00/index.php/api/categories', {
       method: 'GET'
     }).then(response => response.json())
       .then(categories => this.setState({ categories }))

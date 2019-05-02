@@ -18,7 +18,7 @@ class App extends Component {
   render () {
     return (
       <div className='App'>
-        <Router>
+        <Router basename='/~c8cadi00'>
           <MainView loggedIn={this.state.loggedIn} toggleLogin={() => this.toggleLogin()} />
         </Router>
       </div>
